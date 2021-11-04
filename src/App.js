@@ -4,7 +4,7 @@ import "./App.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Header, Sidebar, Modal, Footer, MobileCategory } from "./components";
-import { Home, Contact, Introduction, ProductPage,SingleProductPage } from "./pages";
+import { Home, Contact, Introduction, ProductPage,SingleProductPage,CartPage } from "./pages";
 
 function App() {
   return (
@@ -49,6 +49,9 @@ function App() {
         </Route>
         <Route path="/cua-hang/san-pham/:id">
           <SingleProductPage />
+        </Route>
+        <Route path="/cart">
+          <CartPage />
         </Route>
       </Switch>
     </Router>

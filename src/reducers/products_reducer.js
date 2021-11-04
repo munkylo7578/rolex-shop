@@ -15,6 +15,7 @@ const products_reducer = (state, action) => {
     return {...state,isLoading:true}
   }
   if(action.type === GET_SINGLE_PRODUCT_SUCCESS){
+   
     return {...state,isLoading:false,singleProduct: {...action.payload}}
   }
   if (action.type === MOBILE_CATEGORY_OPEN) {
@@ -61,6 +62,7 @@ const products_reducer = (state, action) => {
     };
   }
   if (action.type === GET_PRODUCTS_SUCCESS) {
+    
     return {
       ...state,
       isLoading: false,

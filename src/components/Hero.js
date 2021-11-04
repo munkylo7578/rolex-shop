@@ -33,7 +33,7 @@ const Hero = ({ title }) => {
             </i>
             LỌC
           </button>
-          <p>Hiển thị 1-9 trong 16 kết quả</p>
+         
           <select value="">
             <option name="" id="">
               Thứ tự mặc định
@@ -110,15 +110,7 @@ const MainWrapper = styled.section`
       }
      
     }
-    p{
-        display: none;
-        margin-left: auto;
-        margin-right: 30px;
-        font-size: 1.1rem;
-        @media (min-width: 992px){
-            display: block;
-        }
-    }
+    
     select {
       outline: none;
       padding: 10px;

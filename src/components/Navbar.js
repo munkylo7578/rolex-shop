@@ -18,7 +18,11 @@ const Navbar = () => {
 
                 <ul>
                   {link.types.map((type) => {
-                    return <li key={Math.random() * Math.random()}><Link to={type.url}>{type.name}</Link></li>;
+                    return (
+                      <li key={Math.random() * Math.random()}>
+                        <Link to={type.url}>{type.name}</Link>
+                      </li>
+                    );
                   })}
                 </ul>
               </li>
@@ -71,46 +75,68 @@ const NavContainer = styled.div`
     height: 100%;
     flex-wrap: wrap;
     .nav-item {
+      position: relative;
+      
+    
       p {
         color: white;
         font-weight: 500;
-        font-size: 1rem;
+        font-size: 0.9rem;
         letter-spacing: 1px;
         line-height: 1.6rem;
         text-transform: uppercase;
+        padding: 25px 0;
+        :hover{
+        color: var(--primary-color);
+      }
       }
     }
-    .brands{
+    .brands {
       position: relative;
-      ul{
+      
+      ul {
         position: absolute;
-        top: 50px;
-        left: 0;
-        /* opacity: 0;
-        visibility: hidden; */
+        top: 100%;
+        left: -40%;
+        opacity: 0;
+        visibility: hidden;
         transition: all 0.5s ease-in-out;
         z-index: 2;
         border-radius: 2px;
         border: 1px solid #ccc;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        ::before{
+        ::after {
           position: absolute;
           content: "";
-          border-color: transparent transparent red transparent;
-          border: 20px solid;
-          top: 0;
-          right: 0;
+          height: 30px;
+          width: 200px;
+          background-color: transparent;
+          top: -15%;
+          left: 0;
         }
-        li{
-          a{
+        ::before {
+          position: absolute;
+          content: "";
+          border-color: transparent transparent white transparent;
+          border-width: 15px;
+          border-style: solid;
+          top: -17%;
+          left: 23%;
+        }
+        li {
+          a {
             display: block;
             padding: 20px 150px 20px 20px;
-           
+            color: var(--primary-color);
             background-color: white;
+            font-size: 0.8rem;
+            :hover {
+              color: black;
+            }
           }
         }
       }
-      :hover ul{
+      :hover ul {
         opacity: 1;
         visibility: visible;
         z-index: 2;
@@ -119,7 +145,7 @@ const NavContainer = styled.div`
     .nav-item--link {
       color: white;
       font-weight: 500;
-      font-size: 1rem;
+      font-size: 0.9rem;
       letter-spacing: 1px;
       line-height: 1.6rem;
       display: block;
