@@ -8,9 +8,46 @@ import {
   MOBILE_CATEGORY_OPEN,
   MOBILE_CATEGORY_CLOSE,
   GET_SINGLE_PRODUCT_BEGIN,
-  GET_SINGLE_PRODUCT_SUCCESS
+  GET_SINGLE_PRODUCT_SUCCESS,
+  SORT_PRODUCT,
+  UPDATE_SORT
 } from "../actions";
 const products_reducer = (state, action) => {
+  if(action.type === SORT_PRODUCT){
+    let tempProduct = []
+
+    if(state.sort === "a-z"){
+    
+        tempProduct = state.products.sort((a,b)=>a.name-b.name)
+   
+    }
+    if(state.sort === "z-a"){
+
+        tempProduct = state.products.sort((a,b)=>b.name-a.name)
+   
+    }
+    if(state.sort === "default-value"){
+     
+       tempProduct = state.initialProducts
+
+    }
+   
+    if(state.sort === "lowest-price"){
+    
+        tempProduct = state.products.sort((a,b)=>a.price-b.price)
+    
+    }
+    if(state.sort === "highest-price"){
+
+        tempProduct = state.products.sort((a,b)=>b.price-a.price)
+   
+    }
+
+    return{...state,products:[...tempProduct]}
+}
+if(action.type === UPDATE_SORT){
+  return {...state,sort:action.payload}
+}
   if(action.type === GET_SINGLE_PRODUCT_BEGIN){
     return {...state,isLoading:true}
   }
@@ -67,6 +104,7 @@ const products_reducer = (state, action) => {
       ...state,
       isLoading: false,
       products: [...action.payload],
+      initialProducts: [...action.payload]
     };
   }
 

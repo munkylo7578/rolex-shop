@@ -7,6 +7,7 @@ import {
   FILTER_CATEGORY_PRODUCTS,
   GET_ALL_PRODUCT,
   CHANGE_PAGE,
+  
 } from "../actions";
 import { useProductsContext } from "../contexts/products_context";
 
@@ -16,6 +17,8 @@ const initialState = {
   productPerPage: [],
   productsWithCategory: [],
   page: 0,
+ 
+  
 };
 
 const FilteredContext = React.createContext();
@@ -43,7 +46,7 @@ export const FilteredProvider = ({ children }) => {
   const changePage = (status) => {
     dispatch({ type: CHANGE_PAGE, payload: status });
   };
-
+  
   return (
     <FilteredContext.Provider
       value={{
@@ -53,6 +56,7 @@ export const FilteredProvider = ({ children }) => {
         changePage,
         filterProductsWithCategory,
         getAllProduct,
+  
       }}
     >
       {children}

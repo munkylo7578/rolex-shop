@@ -5,8 +5,10 @@ import heroImage2 from "../assets/blog10_518c7ab0-ce3f-4092-a34a-be939cb0b851.jp
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useProductsContext } from "../contexts/products_context";
+import { useFilteredContext } from "../contexts/filtered_context";
 const Hero = ({ title }) => {
-  const {openCategory} = useProductsContext()
+  const {openCategory,updateSort,sort} = useProductsContext()
+
   if (title === "LIÊN HỆ" || title === "GIỚI THIỆU") {
     return (
       <Wrapper>
@@ -34,23 +36,21 @@ const Hero = ({ title }) => {
             LỌC
           </button>
          
-          <select value="">
-            <option name="" id="">
+          <select value={sort} onChange={updateSort}>
+            <option value="default-value" >
               Thứ tự mặc định
             </option>
-            <option name="" id="">
-              Thứ tự theo mức độ phổ biến
+            <option value="a-z" >
+              Thứ tự theo tên từ a - z
             </option>
-            <option name="" id="">
-              Thứ tự theo điểm đánh giá
+            <option value="z-a">
+              Thứ tự theo tên từ z - a
             </option>
-            <option name="" id="">
-              Mới nhất
-            </option>
-            <option name="" id="">
+            
+            <option value="lowest-price">
               Thứ tự theo giá : thấp đến cao
             </option>
-            <option name="" id="">
+            <option value="highest-price">
               Thứ tự theo giá : cao xuống thấp
             </option>
           </select>

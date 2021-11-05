@@ -49,7 +49,7 @@ const Category = () => {
           <input type="range" />
 
           <span>Giá 819000 - 13000000</span>
-          <button>LỌC</button>
+        
         </form>
       </aside>
     </Wrapper>
@@ -88,13 +88,7 @@ const Wrapper = styled.section`
       input {
         outline: none;
       }
-      button {
-        padding: 5px 10px;
-        border-radius: 50%;
-        background-color: #666666;
-        border-color: transparent;
-        cursor: pointer;
-      }
+     
 
       span {
         display: block;

@@ -14,7 +14,8 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
   MOBILE_CATEGORY_OPEN,
   MOBILE_CATEGORY_CLOSE,
- 
+  UPDATE_SORT,
+  SORT_PRODUCT
 } from "../actions";
 const initialState = {
   isSidebarOpen: false,
@@ -22,7 +23,9 @@ const initialState = {
   isLoading: false,
   isModalOpen: false,
   isCategoryOpen: false,
-  singleProduct:{}
+  singleProduct:{},
+  sort: "default-value",
+  initialProducts: []
 };
 
 const ProductsContext = React.createContext();
@@ -47,7 +50,14 @@ export const ProductsProvider = ({ children }) => {
   useEffect(() => {
     fetchProduct(products_url);
   }, []);
+  const updateSort = (e)=>{
+    const value = e.target.value
 
+    dispatch({type:UPDATE_SORT,payload:value})
+  }
+  useEffect(()=>{
+    dispatch({type:SORT_PRODUCT})
+  },[state.sort])
   const fetchProduct = async (url) => {
  
     try {
@@ -78,6 +88,7 @@ export const ProductsProvider = ({ children }) => {
         openCategory,
         closeCategory,
         fetchSingleProduct,
+        updateSort,
         ...state,
       }}
     >

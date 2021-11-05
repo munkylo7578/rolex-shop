@@ -10,9 +10,9 @@ import SwiperCore, {
 import { Link } from "react-router-dom";
 // Import Swiper styles
 import "swiper/swiper.scss";
-import "swiper/components/effect-coverflow/effect-coverflow.min.css";
-import "swiper/components/navigation";
-import "swiper/components/lazy/lazy.min.css"
+
+
+
 import { slider1, slider2, slider3_1, slider3_2, slider3_3 } from "../assets";
 
 SwiperCore.use([EffectFade, Autoplay, Lazy]);

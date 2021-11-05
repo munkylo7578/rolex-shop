@@ -1,9 +1,12 @@
 import React from 'react'
-import { MOBILE_CATEGORY_OPEN,MOBILE_CATEGORY_CLOSE,FILTER_CATEGORY_PRODUCTS,GET_ALL_PRODUCT,CHANGE_PAGE } from "../actions";
+import { MOBILE_CATEGORY_OPEN,MOBILE_CATEGORY_CLOSE,FILTER_CATEGORY_PRODUCTS,GET_ALL_PRODUCT,CHANGE_PAGE,UPDATE_SORT,SORT_PRODUCT } from "../actions";
 
 import { paginate } from '../utils/helper';
 const filtered_reducer = (state,action) => {
+   
+   
     if (action.type === CHANGE_PAGE){
+        
         if(action.payload === "next"){
             let tempPage = state.page + 1 
             

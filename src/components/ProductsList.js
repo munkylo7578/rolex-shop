@@ -9,7 +9,7 @@ import { formatPrice } from "../utils/helper";
 import { GrFormPrevious } from "react-icons/gr";
 import { GrFormNext } from "react-icons/gr";
 const ProductsList = ({ category }) => {
-  const { products, isLoading } = useProductsContext();
+  const { products, isLoading,sort } = useProductsContext();
 
   const {
     page,
@@ -25,14 +25,15 @@ const ProductsList = ({ category }) => {
       getAllProduct();
     }, 0);
     return () => clearTimeout(timer);
-  }, [products, page]);
+  }, [products, page,sort]);
   useEffect(() => {
     filterProductsWithCategory(category);
-  }, [category, products]);
+  }, [category, products,sort]);
   if (isLoading) {
     return <Loading />;
   }
   if (category === "all") {
+    console.log("all")
     return (
       <Wrapper>
         {productPerPage?.map((product) => {
@@ -219,6 +220,7 @@ const Wrapper = styled.section`
     grid-row-end: auto;
     @media (min-width: 650px) {
     grid-column: 2/3;
+    grid-row-end: 6
   }
     button {
       margin-left: 5px;
