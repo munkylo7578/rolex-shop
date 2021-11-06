@@ -7,7 +7,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useProductsContext } from "../contexts/products_context";
 import { useFilteredContext } from "../contexts/filtered_context";
 const Hero = ({ title }) => {
-  const {openCategory,updateSort,sort} = useProductsContext()
+  const { openCategory, updateSort, sort } = useProductsContext();
 
   if (title === "LIÊN HỆ" || title === "GIỚI THIỆU") {
     return (
@@ -35,21 +35,13 @@ const Hero = ({ title }) => {
             </i>
             LỌC
           </button>
-         
+
           <select value={sort} onChange={updateSort}>
-            <option value="default-value" >
-              Thứ tự mặc định
-            </option>
-            <option value="a-z" >
-              Thứ tự theo tên từ a - z
-            </option>
-            <option value="z-a">
-              Thứ tự theo tên từ z - a
-            </option>
-            
-            <option value="lowest-price">
-              Thứ tự theo giá : thấp đến cao
-            </option>
+            <option value="default-value">Thứ tự mặc định</option>
+            <option value="a-z">Thứ tự theo tên từ a - z</option>
+            <option value="z-a">Thứ tự theo tên từ z - a</option>
+
+            <option value="lowest-price">Thứ tự theo giá : thấp đến cao</option>
             <option value="highest-price">
               Thứ tự theo giá : cao xuống thấp
             </option>
@@ -67,31 +59,33 @@ const MainWrapper = styled.section`
     display: flex;
     flex-direction: column;
 
-    @media (min-width:992px){
-        flex-direction: row;
-        justify-content: space-between;
+    @media (min-width: 992px) {
+      flex-direction: row;
+      justify-content: space-between;
     }
     div {
       display: flex;
       align-items: center;
-      a{
-          color: #ccc;
-          font-size: 1.1rem;
-          :hover{
-              color: #4b4c4b; 
-          }
+      a {
+        color: #ccc;
+        font-size: 1.1rem;
+        :hover {
+          color: #4b4c4b;
+        }
       }
-      
+
       span {
         margin: 0 8px;
       }
-      h3{
-          font-weight: 300;
+      h3 {
+        font-weight: 300;
       }
-      @media (min-width: 992px){
-          a,h3,span{
-              font-size: 1.2rem;
-          }
+      @media (min-width: 992px) {
+        a,
+        h3,
+        span {
+          font-size: 1.2rem;
+        }
       }
     }
     button {
@@ -102,22 +96,21 @@ const MainWrapper = styled.section`
       align-items: center;
       cursor: pointer;
 
-      @media (min-width:992px){
+      @media (min-width: 992px) {
         display: none;
-    }
-      i {
-          margin-right: 5px;
       }
-     
+      i {
+        margin-right: 5px;
+      }
     }
-    
+
     select {
       outline: none;
       padding: 10px;
       border: 1px solid #e5e5e5;
       color: #4b4c4b;
-      @media (min-width: 992px){
-          font-size: 1.2rem;
+      @media (min-width: 992px) {
+        font-size: 1.2rem;
       }
     }
     select:focus {

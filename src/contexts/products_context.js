@@ -6,7 +6,7 @@ import { products_url } from "../utils/constants";
 import {
   SIDEBAR_CLOSE,
   SIDEBAR_OPEN,
- 
+  CHANGE_PAGE,
   GET_PRODUCTS_BEGIN,
   GET_PRODUCTS_SUCCESS,
   MODAL_CLOSE,
@@ -15,7 +15,8 @@ import {
   MOBILE_CATEGORY_OPEN,
   MOBILE_CATEGORY_CLOSE,
   UPDATE_SORT,
-  SORT_PRODUCT
+  SORT_PRODUCT,
+  GET_CATEGORY_PRODUCTS
 } from "../actions";
 const initialState = {
   isSidebarOpen: false,
@@ -25,7 +26,9 @@ const initialState = {
   isCategoryOpen: false,
   singleProduct:{},
   sort: "default-value",
-  initialProducts: []
+  initialProducts: [],
+  featuredProducts: [],
+  
 };
 
 const ProductsContext = React.createContext();
@@ -50,14 +53,8 @@ export const ProductsProvider = ({ children }) => {
   useEffect(() => {
     fetchProduct(products_url);
   }, []);
-  const updateSort = (e)=>{
-    const value = e.target.value
-
-    dispatch({type:UPDATE_SORT,payload:value})
-  }
-  useEffect(()=>{
-    dispatch({type:SORT_PRODUCT})
-  },[state.sort])
+  
+  
   const fetchProduct = async (url) => {
  
     try {
@@ -68,6 +65,7 @@ export const ProductsProvider = ({ children }) => {
       console.log(err);
     }
   };
+  
 
   const fetchSingleProduct = async(url)=>{
     try{
@@ -77,8 +75,17 @@ export const ProductsProvider = ({ children }) => {
     }catch(err){
       console.log(err)
     }
-   
+    
   }
+  const updateSort = (e)=>{
+    const value = e.target.value
+
+    dispatch({type:UPDATE_SORT,payload:value})
+  }
+  const sortProduct = ()=>{
+    dispatch({type:SORT_PRODUCT})
+  }
+  
   return (
     <ProductsContext.Provider
       value={{
@@ -89,6 +96,8 @@ export const ProductsProvider = ({ children }) => {
         closeCategory,
         fetchSingleProduct,
         updateSort,
+        sortProduct,
+      
         ...state,
       }}
     >

@@ -3,60 +3,41 @@ import styled from "styled-components";
 import { useProductsContext } from "../contexts/products_context";
 import { useFilteredContext } from "../contexts/filtered_context";
 import uniqid from "uniqid";
-import { Link } from "react-router-dom";
+
 import { Products, Loading } from ".";
-import { formatPrice } from "../utils/helper";
+
 import { GrFormPrevious } from "react-icons/gr";
 import { GrFormNext } from "react-icons/gr";
+import { Product } from ".";
 const ProductsList = ({ category }) => {
-  const { products, isLoading,sort } = useProductsContext();
+  const { products, isLoading, sort, price,sortProduct } = useProductsContext();
 
   const {
     page,
-    allProduct,
-    productPerPage,
-    filterProductsWithCategory,
-    productsWithCategory,
-    getAllProduct,
+    paginatedArray,
     changePage,
+    getProductByCategory,
+    filteredProducts,
   } = useFilteredContext();
+  useEffect(()=>{
+    sortProduct()
+  },[sort,category])
   useEffect(() => {
     const timer = setTimeout(() => {
-      getAllProduct();
+      getProductByCategory(category);
     }, 0);
     return () => clearTimeout(timer);
-  }, [products, page,sort]);
-  useEffect(() => {
-    filterProductsWithCategory(category);
-  }, [category, products,sort]);
+  }, [category, products, page]);
   if (isLoading) {
     return <Loading />;
   }
-  if (category === "all") {
-    console.log("all")
-    return (
-      <Wrapper>
-        {productPerPage?.map((product) => {
-          return (
-            <article key={product.id}>
-              <Link
-                className="product-list__item"
-                to={`/cua-hang/san-pham/${product.id}`}
-              >
-                {product.images?.map((image) => {
-                  return (
-                    <img key={image.id} src={image.url} alt={product.name} />
-                  );
-                })}
-                <p>{product.name}</p>
-                <div>{formatPrice(product.price)}</div>
-              </Link>
-              <Link to="/cart" className="btn--add-product">
-                +
-              </Link>
-            </article>
-          );
-        })}
+
+  return (
+    <Wrapper>
+      {filteredProducts?.map((product) => {
+        return <Product key={product.id} product={product} />;
+      })}
+      {paginatedArray.length > 1 && (
         <div className="paginate-button__wrapper">
           {page > 0 && (
             <button
@@ -67,7 +48,7 @@ const ProductsList = ({ category }) => {
             </button>
           )}
 
-          {allProduct?.map((product, index) => {
+          {paginatedArray?.map((product, index) => {
             return (
               <button
                 onClick={() => changePage(index)}
@@ -78,7 +59,7 @@ const ProductsList = ({ category }) => {
               </button>
             );
           })}
-          {page < allProduct.length - 1 && (
+          {page < paginatedArray.length - 1 && (
             <button
               className="change-page-btn"
               onClick={() => changePage("next")}
@@ -87,39 +68,14 @@ const ProductsList = ({ category }) => {
             </button>
           )}
         </div>
-      </Wrapper>
-    );
-  }
-  return (
-    <Wrapper>
-      {productsWithCategory?.map((product) => {
-        return (
-          <article key={product.id}>
-            <Link
-              className="product-list__item"
-              to={`/cua-hang/san-pham/${product.id}`}
-            >
-              {product.images.map((image) => {
-                return (
-                  <img key={image.id} src={image.url} alt={product.name} />
-                );
-              })}
-              <p>{product.name}</p>
-              <div>{formatPrice(product.price)}</div>
-            </Link>
-            <Link to="/cart" className="btn--add-product">
-              +
-            </Link>
-          </article>
-        );
-      })}
+      )}
     </Wrapper>
   );
 };
 const Wrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  
+
   grid-gap: 20px;
   article {
     position: relative;
@@ -219,9 +175,9 @@ const Wrapper = styled.section`
     grid-column: 1/3;
     grid-row-end: auto;
     @media (min-width: 650px) {
-    grid-column: 2/3;
-    grid-row-end: 6
-  }
+      grid-column: 2/3;
+      grid-row-end: 6;
+    }
     button {
       margin-left: 5px;
       border-radius: 50%;

@@ -11,6 +11,7 @@ import IntroSlider from "./IntroSlider";
 import ProductsList from "./ProductsList";
 import MobileCategory from "./MobileCategory";
 import Loading from "./Loading";
+import Product from "./Product"
 export {
   Header,
   Hero,
@@ -25,4 +26,5 @@ export {
   ProductsList,
   MobileCategory,
   Loading,
+  Product
 };

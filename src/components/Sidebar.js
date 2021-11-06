@@ -38,7 +38,7 @@ const Sidebar = () => {
                   {types.map((type) => {
                     return (
                       <li key={Math.random()}>
-                        <Link to={type.url}>{type.name}</Link>
+                        <Link onClick={closeModal} to={type.url}>{type.name}</Link>
                       </li>
                     );
                   })}

@@ -3,29 +3,31 @@ import reducer from "../reducers/filtered_reducer";
 import {
   MOBILE_CATEGORY_OPEN,
   MOBILE_CATEGORY_CLOSE,
-  MODAL_CLOSE,
-  FILTER_CATEGORY_PRODUCTS,
+  GET_CATEGORY_PRODUCTS,
   GET_ALL_PRODUCT,
   CHANGE_PAGE,
-  
+  UPDATE_PRICE,
 } from "../actions";
 import { useProductsContext } from "../contexts/products_context";
 
 const initialState = {
   isCategoryOpen: false,
-  allProduct: [],
-  productPerPage: [],
+  filteredProducts: [],
+  
+  isPaginated: false,
+  minPrice: 0,
+  maxPrice: 0,
+  price: 0,
   productsWithCategory: [],
   page: 0,
- 
-  
+  paginatedArray: [],
 };
 
 const FilteredContext = React.createContext();
 
 export const FilteredProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { products, isLoading } = useProductsContext();
+  const { products } = useProductsContext();
 
   const openCategory = () => {
     dispatch({ type: MOBILE_CATEGORY_OPEN });
@@ -37,16 +39,21 @@ export const FilteredProvider = ({ children }) => {
   const getAllProduct = () => {
     dispatch({ type: GET_ALL_PRODUCT, payload: products });
   };
-  const filterProductsWithCategory = (category) => {
-    dispatch({
-      type: FILTER_CATEGORY_PRODUCTS,
-      payload: { products, category },
-    });
+
+  const changePrice = (e) => {
+    const value = e.target.value;
+    dispatch({ type: UPDATE_PRICE, payload: value });
   };
   const changePage = (status) => {
     dispatch({ type: CHANGE_PAGE, payload: status });
   };
-  
+
+  const getProductByCategory = (category) => {
+    dispatch({
+      type: GET_CATEGORY_PRODUCTS,
+      payload: { products, category },
+    });
+  };
   return (
     <FilteredContext.Provider
       value={{
@@ -54,9 +61,9 @@ export const FilteredProvider = ({ children }) => {
         openCategory,
         closeCategory,
         changePage,
-        filterProductsWithCategory,
+        getProductByCategory,
         getAllProduct,
-  
+        changePrice,
       }}
     >
       {children}

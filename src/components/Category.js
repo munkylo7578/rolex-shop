@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { links } from "../utils/constants";
 import uniqid from "uniqid";
+import { useFilteredContext } from "../contexts/filtered_context";
 const Category = () => {
+  const { minPrice, maxPrice, price, changePrice } = useFilteredContext();
   return (
     <Wrapper>
       <aside>
@@ -45,12 +47,18 @@ const Category = () => {
           })}
         </ul>
         <h3>LỌC THEO GIÁ</h3>
-        <form action="">
-          <input type="range" />
+        <div>
+          <input
+            type="range"
+            min={minPrice}
+            max={maxPrice}
+            value={price}
+            onChange={changePrice}
+            step={1}
+          />
 
-          <span>Giá 819000 - 13000000</span>
-        
-        </form>
+          <span>Giá {minPrice} - {price}</span>
+        </div>
       </aside>
     </Wrapper>
   );
@@ -82,13 +90,12 @@ const Wrapper = styled.section`
         }
       }
     }
-    form {
+    div {
       margin-top: 16px;
-  
+
       input {
         outline: none;
       }
-     
 
       span {
         display: block;

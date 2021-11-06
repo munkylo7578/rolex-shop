@@ -9,5 +9,11 @@ export const paginate = (products)=>{
       const start = index * itemPerPage
       return products.slice(start,start + itemPerPage)
    })
-   return newProducts
+   if(products.length > itemPerPage)
+   {
+      return newProducts
+   }
+   else{
+      return products
+   }
 }
