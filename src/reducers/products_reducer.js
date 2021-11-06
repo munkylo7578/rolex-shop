@@ -12,7 +12,7 @@ import {
   SORT_PRODUCT,
   UPDATE_SORT,
  
-  CHANGE_PAGE
+  
 } from "../actions";
 
 const products_reducer = (state, action) => {

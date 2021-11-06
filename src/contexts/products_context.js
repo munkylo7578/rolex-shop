@@ -6,7 +6,7 @@ import { products_url } from "../utils/constants";
 import {
   SIDEBAR_CLOSE,
   SIDEBAR_OPEN,
-  CHANGE_PAGE,
+  
   GET_PRODUCTS_BEGIN,
   GET_PRODUCTS_SUCCESS,
   MODAL_CLOSE,
@@ -16,7 +16,7 @@ import {
   MOBILE_CATEGORY_CLOSE,
   UPDATE_SORT,
   SORT_PRODUCT,
-  GET_CATEGORY_PRODUCTS
+ 
 } from "../actions";
 const initialState = {
   isSidebarOpen: false,

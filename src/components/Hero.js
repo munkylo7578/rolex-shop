@@ -5,7 +5,7 @@ import heroImage2 from "../assets/blog10_518c7ab0-ce3f-4092-a34a-be939cb0b851.jp
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useProductsContext } from "../contexts/products_context";
-import { useFilteredContext } from "../contexts/filtered_context";
+
 const Hero = ({ title }) => {
   const { openCategory, updateSort, sort } = useProductsContext();
 
@@ -78,13 +78,14 @@ const MainWrapper = styled.section`
         margin: 0 8px;
       }
       h3 {
-        font-weight: 300;
+        font-weight: 500;
       }
       @media (min-width: 992px) {
         a,
         h3,
         span {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
+       
         }
       }
     }
@@ -110,7 +111,7 @@ const MainWrapper = styled.section`
       border: 1px solid #e5e5e5;
       color: #4b4c4b;
       @media (min-width: 992px) {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
     }
     select:focus {

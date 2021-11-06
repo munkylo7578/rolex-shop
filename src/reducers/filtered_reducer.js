@@ -1,43 +1,53 @@
-import React from "react";
+
 import {
   MOBILE_CATEGORY_OPEN,
   MOBILE_CATEGORY_CLOSE,
-  FILTER_CATEGORY_PRODUCTS,
-  GET_ALL_PRODUCT,
   CHANGE_PAGE,
   UPDATE_PRICE,
   GET_CATEGORY_PRODUCTS,
-  
+  CHANGE_PRICE,
 } from "../actions";
 
 import { paginate } from "../utils/helper";
 const filtered_reducer = (state, action) => {
-  
   if (action.type === GET_CATEGORY_PRODUCTS) {
-    const {products,category} = action.payload
-    let tempProducts = []
-   
+    const { products, category } = action.payload;
+    let tempProducts = [];
 
-    let tempArray = [...paginate(products)]
-  
-    if(category === "all"){
-  
-      
-      tempProducts = tempArray[state.page]
+    let tempArray = [...paginate(products)];
 
-    }
-    else{
-      tempArray = []
+    if (category === "all") {
+      tempProducts = tempArray[state.page];
+    } else {
+      tempArray = [];
       tempProducts = products?.filter((e) =>
-      e.category.find((e) => e === category)
-    ); // filter an array and find element fit "category"
+        e.category.find((e) => e === category)
+      ); // filter an array and find element fit "category"
     }
+    const min = Math.min(...tempProducts.map((p) => p.price));
+    const max = Math.max(...tempProducts.map((p) => p.price));
+
     return {
       ...state,
-      paginatedArray:[...tempArray],
+      paginatedArray: [...tempArray],
       productsWithCategory: [...tempProducts],
       filteredProducts: [...tempProducts],
+      minPrice: min,
+      maxPrice: max,
+      price: max,
     };
+  }
+  if (action.type === UPDATE_PRICE) {
+    return { ...state, price: action.payload };
+  }
+  if (action.type === CHANGE_PRICE) {
+    let tempArray = [...state.productsWithCategory];
+
+    let tempProducts = tempArray.filter(
+      (product) => product.price <= state.price
+    );
+
+    return { ...state, filteredProducts: tempProducts };
   }
   if (action.type === CHANGE_PAGE) {
     if (action.payload === "next") {
@@ -53,36 +63,7 @@ const filtered_reducer = (state, action) => {
       return { ...state, page: action.payload };
     }
   }
- 
- 
-  if (action.type === UPDATE_PRICE) {
-    const tempArray = [...state.testArray]
-    const tempProduct = tempArray?.filter(
-      (p) => p.price <= Number(state.price)
-    );
-    console.log(tempProduct)
-    return {
-      ...state,
-      price: Number(action.payload) ,productsWithCategory:tempProduct
-    };
-  }
-  
- /*  if (action.type === GET_ALL_PRODUCT) {
-    const tempProducts = paginate(action.payload);
-    const flattedArray = [].concat(...tempProducts);
-    flattedArray?.sort((a, b) => a.price - b.price);
-    const tempMinPrice = flattedArray[0]?.price;
-    const tempMaxPrice = flattedArray[flattedArray.length - 1]?.price;
 
-    return {
-      ...state,
-      minPrice: tempMinPrice,
-      maxPrice: tempMaxPrice,
-      allProduct: tempProducts,
-      price: tempMaxPrice,
-      productPerPage: [...tempProducts[state.page]],
-    };
-  } */
   if (action.type === MOBILE_CATEGORY_OPEN) {
     return {
       ...state,
@@ -95,24 +76,6 @@ const filtered_reducer = (state, action) => {
       isCategoryOpen: false,
     };
   }
-  /* if (action.type === FILTER_CATEGORY_PRODUCTS) {
-    const { products, category } = action.payload;
-    const tempProducts = products?.filter((e) =>
-      e.category.find((e) => e === category)
-    ); // filter an array and find element fit "category"
-    const tempArray = [...tempProducts]?.sort((a, b) => a.price - b.price);
-
-    const tempMinPrice = tempArray[0]?.price;
-    const tempMaxPrice = tempArray[tempArray.length - 1]?.price;
-    return {
-      ...state,
-      minPrice: tempMinPrice,
-      maxPrice: tempMaxPrice,
-      price: tempMaxPrice,
-      testArray: [...tempProducts],
-      productsWithCategory: [...tempProducts],
-    };
-  } */
 
   throw new Error(`No Matching "${action.type}" - action type`);
 };

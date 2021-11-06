@@ -4,8 +4,9 @@ import { NavLink } from "react-router-dom";
 import { links } from "../utils/constants";
 import uniqid from "uniqid";
 import { useFilteredContext } from "../contexts/filtered_context";
+
 const Category = () => {
-  const { minPrice, maxPrice, price, changePrice } = useFilteredContext();
+  const { minPrice, maxPrice, price, changePrice,sortByPrice } = useFilteredContext();
   return (
     <Wrapper>
       <aside>
@@ -47,7 +48,7 @@ const Category = () => {
           })}
         </ul>
         <h3>LỌC THEO GIÁ</h3>
-        <div>
+        <form onSubmit={sortByPrice}>
           <input
             type="range"
             min={minPrice}
@@ -58,7 +59,8 @@ const Category = () => {
           />
 
           <span>Giá {minPrice} - {price}</span>
-        </div>
+          <button  type="submit">LỌC</button>
+        </form>
       </aside>
     </Wrapper>
   );
@@ -90,7 +92,7 @@ const Wrapper = styled.section`
         }
       }
     }
-    div {
+    form {
       margin-top: 16px;
 
       input {
@@ -100,6 +102,13 @@ const Wrapper = styled.section`
       span {
         display: block;
         margin: 10px 0;
+      }
+      button {
+        padding: 5px 10px;
+        border-radius: 50%;
+        background-color: #666666;
+        border-color: transparent;
+        cursor: pointer;
       }
     }
   }

@@ -7,13 +7,14 @@ import {
   GET_ALL_PRODUCT,
   CHANGE_PAGE,
   UPDATE_PRICE,
+  CHANGE_PRICE
 } from "../actions";
 import { useProductsContext } from "../contexts/products_context";
 
 const initialState = {
   isCategoryOpen: false,
   filteredProducts: [],
-  
+
   isPaginated: false,
   minPrice: 0,
   maxPrice: 0,
@@ -41,9 +42,13 @@ export const FilteredProvider = ({ children }) => {
   };
 
   const changePrice = (e) => {
-    const value = e.target.value;
+    const value = Number(e.target.value);
     dispatch({ type: UPDATE_PRICE, payload: value });
   };
+  const sortByPrice = (e)=>{
+    e.preventDefault()
+    dispatch({type:CHANGE_PRICE})
+  }
   const changePage = (status) => {
     dispatch({ type: CHANGE_PAGE, payload: status });
   };
@@ -64,6 +69,7 @@ export const FilteredProvider = ({ children }) => {
         getProductByCategory,
         getAllProduct,
         changePrice,
+        sortByPrice
       }}
     >
       {children}

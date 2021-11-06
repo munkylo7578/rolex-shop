@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useProductsContext } from "../contexts/products_context";
 
 const Modal = () => {
-  const { isSidebarOpen,closeSidebar,closeModal,isModalOpen,isCategoryOpen } = useProductsContext();
+  const { closeModal,isModalOpen } = useProductsContext();
 
   return (
     <ModalContainer onClick={closeModal}>
