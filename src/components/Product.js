@@ -26,7 +26,7 @@ const Wrapper = styled.article`
   border-left: 1px solid #ececec;
   border-right: 1px solid #ececec;
   border-bottom: 1px solid #ececec;
-  transition: all 0.5 ease-out;
+  transition: all 0.5s ease-in;
   padding-bottom: 10px;
   height: 290px;
   @media (min-width: 772px) {

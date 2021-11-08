@@ -3,7 +3,7 @@ import { Hero, Products } from "../components";
 import styled from "styled-components";
 
 const ProductPage = ({ category, title }) => {
-
+ 
   return (
     <Wrapper>
       <Hero title={title} />
@@ -11,5 +11,5 @@ const ProductPage = ({ category, title }) => {
     </Wrapper>
   );
 };
-const Wrapper = styled.section``;
+const Wrapper = styled.main``;
 export default ProductPage;

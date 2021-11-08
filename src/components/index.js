@@ -12,6 +12,7 @@ import ProductsList from "./ProductsList";
 import MobileCategory from "./MobileCategory";
 import Loading from "./Loading";
 import Product from "./Product"
+import SingleProduct from "./SingleProduct"
 export {
   Header,
   Hero,
@@ -26,5 +27,6 @@ export {
   ProductsList,
   MobileCategory,
   Loading,
-  Product
+  Product,
+  SingleProduct
 };

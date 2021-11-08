@@ -3,8 +3,10 @@ import { useState, useCallback } from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import styled from "styled-components";
-import { TiLocation } from "react-icons/ti";
+import { MdLocationOn } from "react-icons/md";
+import { memo } from "react/cjs/react.development";
 function Map() {
+
   const [viewport, setViewport] = useState({
     latitude: 10.823099,
     longitude: 106.629664,
@@ -30,7 +32,7 @@ function Map() {
           longitude={106.629664}
           latitude={10.823099}
         >
-          <TiLocation />
+          <MdLocationOn />
           <p>Côg ty TNHH MONA MEDIA</p>
         </Marker>
       </ReactMapGL>
@@ -55,4 +57,4 @@ const MapContainer = styled.section`
     width: 160px;
   }
 `;
-export default Map;
+export default memo(Map);

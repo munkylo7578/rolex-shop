@@ -3,10 +3,9 @@ import styled from "styled-components";
 import footer from "../assets/footer.jpg";
 import { FaPaperPlane } from "react-icons/fa";
 import logo from "../assets/logo-black.PNG";
-import { IoLocation } from "react-icons/io5";
-import { GiRotaryPhone } from "react-icons/gi";
-import { MdAttachEmail } from "react-icons/md";
-import { BsSkype } from "react-icons/bs";
+
+import { MdAttachEmail,MdLocationOn } from "react-icons/md";
+import { BsSkype,BsFillTelephoneFill } from "react-icons/bs";
 const Footer = () => {
   return (
     <Wrapper>
@@ -18,14 +17,14 @@ const Footer = () => {
           <article className="footer-contact">
             <div>
               <i>
-                <IoLocation />
+                <MdLocationOn />
               </i>
               <p>319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM</p>
             </div>
 
             <div>
               <i>
-                <GiRotaryPhone />
+                <BsFillTelephoneFill />
               </i>
               <p>076 922 0162</p>
             </div>

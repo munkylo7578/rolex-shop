@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
 import { IntroSlider } from '../components'
+import {LoadableIntroSlider} from '../loadables'
 const HomePage = () => {
-    return (
-        <main>
-            <IntroSlider />
-        </main>
-    )
-}
+  return (
+ 
+      <LoadableIntroSlider />
 
-export default HomePage
+  );
+};
+
+export default HomePage;

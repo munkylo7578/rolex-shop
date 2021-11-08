@@ -2,15 +2,16 @@ import React from "react";
 
 import styled from "styled-components";
 import logo from "../assets/logo.png";
-import { FaBars } from "react-icons/fa";
-import { BsBag } from "react-icons/bs";
-import {FiSearch} from "react-icons/fi"
-import {FaUserAlt} from "react-icons/fa"
+import { FaBars,FaUserAlt,FaSearch } from "react-icons/fa";
+import { BsBag} from "react-icons/bs";
+
+
 import  Navbar  from "./Navbar";
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../contexts/products_context";
 const Header = () => {
   const {openSidebar} = useProductsContext()
+
   return (
     <Wrapper>
       <nav className="sub-nav">
@@ -21,7 +22,7 @@ const Header = () => {
      
           <Link to='/'><img src={logo} alt="" /></Link>
           <div className="nav-right">
-            <i className="main-icon--separate"><FiSearch className="main-icon"/></i>
+            <i className="main-icon--separate"><FaSearch className="main-icon"/></i>
             <i className="main-icon--separate"><FaUserAlt className="main-icon"/></i>
             <div className="price-wrapper">
               <span className="test" >0</span>

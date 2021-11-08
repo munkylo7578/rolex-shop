@@ -1,40 +1,27 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React from "react";
+import "slick-carousel/slick/slick.css";
+
+import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import SwiperCore, {
-  
-  EffectFade,
-  Autoplay,
-  Lazy,
-} from "swiper";
-import { Link } from "react-router-dom";
-// Import Swiper styles
-import "swiper/swiper.scss";
-
-
-
+import Slider from "react-slick";
 import { slider1, slider2, slider3_1, slider3_2, slider3_3 } from "../assets";
-
-SwiperCore.use([EffectFade, Autoplay, Lazy]);
+import { Link } from "react-router-dom";
 const IntroSlider = () => {
-  const [activeSlide, setActiveSlide] = useState(null);
- 
- 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    fade:!0,
+    draggable: true,
+    slickPrev: true,
+    slickNext: true
+  };
   return (
     <Wrapper>
-      <Swiper
-  
-        lazy={true}
-        loop={true}
-  
-   
-        spaceBetween={0}
-        slidesPerView={1}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={(e) => setActiveSlide(e.activeIndex)}
-       
-      >
-        <SwiperSlide className="slide slide-1  ">
+      <Slider className="slider" {...settings}>
+        <div className="slide slide-1  ">
           <img src={slider1} alt="slider1" className="swiper-lazy" />
           <div className="slide-content">
             <blockquote>
@@ -47,28 +34,24 @@ const IntroSlider = () => {
               </p>
             </blockquote>
             <Link to="/cua-hang">mua ngay</Link>
-            
-          
-          
           </div>
-          
-        </SwiperSlide>
-        <SwiperSlide className="slide slide-2">
+        </div>
+        <div className="slide slide-2">
           <img src={slider2} alt="slider2" />
-         
-          
-        </SwiperSlide>
-        <SwiperSlide className="slide slide-3">
+        </div>
+        <div className="slide slide-3">
           <img src={slider3_2} alt="slider3-2" />
-        </SwiperSlide>
-      </Swiper>
+        </div>
+      </Slider>
     </Wrapper>
   );
 };
 const Wrapper = styled.section`
+  .slider{
+  
+  }
   .slide {
     width: 100%;
-
     height: 500px;
     @media (min-width: 700px) {
       height: 800px;
@@ -79,7 +62,7 @@ const Wrapper = styled.section`
       object-fit: cover;
     }
   }
- 
+
   .slide-1 {
     position: relative;
     .slide-content {
@@ -102,7 +85,6 @@ const Wrapper = styled.section`
         background-color: var(--primary-color);
         height: 100%;
       }
-
       h5,
       h3,
       p {
@@ -123,7 +105,6 @@ const Wrapper = styled.section`
         line-height: 1.6;
         margin-bottom: 0;
       }
-
       a {
         padding: 10px 23px;
         border: 2px solid var(--primary-color);

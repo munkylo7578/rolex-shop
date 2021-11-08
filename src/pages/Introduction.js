@@ -19,7 +19,7 @@ const Introduction = ({ title }) => {
     </Wrapper>
   );
 };
-const Wrapper = styled.section`
+const Wrapper = styled.main`
   .introduction-heading {
     text-align: center;
     margin-top: 64px;

@@ -3,14 +3,14 @@ import styled from "styled-components";
 /* ICON IMPORT */
 import {IoClose} from 'react-icons/io5'
 import { FaSearch } from "react-icons/fa";
-import { RiArrowDropDownLine } from "react-icons/ri";
+import { MdArrowDropDown } from "react-icons/md";
 /* END ICON IMPORT */
 import { links } from "../utils/constants";
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../contexts/products_context";
 const Sidebar = () => {
   const [brandsCategoryOpen, setBrandsCategoryOpen] = useState(false);
-  const { isSidebarOpen,closeSidebar,closeModal } = useProductsContext();
+  const { isSidebarOpen,closeModal } = useProductsContext();
   return (
     <SidebarContainer >
       <aside className={isSidebarOpen ? 'show-sidebar' : ''}>
@@ -29,7 +29,7 @@ const Sidebar = () => {
             return (
               <li key={id} className="brands-category link">
                 <p>{text}</p>
-                <RiArrowDropDownLine
+                <MdArrowDropDown
                   onClick={() => setBrandsCategoryOpen(!brandsCategoryOpen)}
                   className={brandsCategoryOpen ? "rotated" : ""}
                 />

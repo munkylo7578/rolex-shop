@@ -19,6 +19,7 @@ import {
  
 } from "../actions";
 const initialState = {
+  isSingleProductLoading: false,
   isSidebarOpen: false,
   products: [],
   isLoading: false,
@@ -61,6 +62,7 @@ export const ProductsProvider = ({ children }) => {
       dispatch({ type: GET_PRODUCTS_BEGIN });
       const { data } = await axios(url);
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: data });
+
     } catch (err) {
       console.log(err);
     }
@@ -68,6 +70,7 @@ export const ProductsProvider = ({ children }) => {
   
 
   const fetchSingleProduct = async(url)=>{
+    
     try{
       dispatch({type:GET_SINGLE_PRODUCT_BEGIN})
       const {data} = await axios(url)
@@ -75,7 +78,7 @@ export const ProductsProvider = ({ children }) => {
     }catch(err){
       console.log(err)
     }
-    
+   
   }
   const updateSort = (e)=>{
     const value = e.target.value

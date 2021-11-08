@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { RiArrowDropDownLine } from "react-icons/ri";
+import { MdArrowDropDown } from "react-icons/md";
 import { links } from "../utils/constants";
 import { Link, NavLink } from "react-router-dom/cjs/react-router-dom.min";
+
 const Navbar = () => {
+  
   return (
     <NavContainer>
       <ul className="nav-center">
@@ -13,7 +15,7 @@ const Navbar = () => {
               <li className="nav-item brands" key={link.id}>
                 <div className="sub-menu_container">
                   <p>{link.text}</p>
-                  <RiArrowDropDownLine className="dropdown-icon" />
+                  <MdArrowDropDown className="dropdown-icon" />
                 </div>
 
                 <ul>

@@ -6,6 +6,7 @@ import uniqid from "uniqid";
 import { useProductsContext } from "../contexts/products_context";
 const MobileCategory = () => {
   const {isCategoryOpen,closeModal} = useProductsContext()
+
   return (
     <Wrapper>
       <aside className={isCategoryOpen ? "show-category" : "" }>

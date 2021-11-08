@@ -3,10 +3,10 @@ import { Hero } from "../components";
 import styled from "styled-components";
 import { Map } from "../components";
 import logoMona from "../assets/logo-mona.png";
-import { IoLocation } from "react-icons/io5";
-import { GiRotaryPhone } from "react-icons/gi";
-import { MdAttachEmail } from "react-icons/md";
-import { BsSkype } from "react-icons/bs";
+
+
+import { MdAttachEmail,MdLocationOn } from "react-icons/md";
+import { BsSkype,BsFillTelephoneFill } from "react-icons/bs";
 import { ContactForm } from "../components";
 const Contact = ({ title }) => {
   return (
@@ -21,13 +21,13 @@ const Contact = ({ title }) => {
               <div className="info__wrapper">
                 <div>
                   <i>
-                    <IoLocation />
+                    <MdLocationOn />
                   </i>
                   <p>319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM</p>
                 </div>
                 <div>
                   <i>
-                    <GiRotaryPhone />
+                    <BsFillTelephoneFill />
                   </i>
                   <p>076 922 0162</p>
                 </div>
@@ -56,7 +56,7 @@ const Contact = ({ title }) => {
   );
 };
 
-const Wrapper = styled.section`
+const Wrapper = styled.main`
 margin-bottom: 56px;
   .section-center {
     display: grid;

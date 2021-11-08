@@ -1,4 +1,4 @@
-import React, { useReducer, useContext, useEffect } from "react";
+import React, { useReducer, useContext } from "react";
 import reducer from "../reducers/filtered_reducer";
 import {
   MOBILE_CATEGORY_OPEN,

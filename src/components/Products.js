@@ -1,11 +1,13 @@
 import React from 'react'
 import { Category, ProductsList } from '.'
+import {LoadableProductList} from "../loadables"
 import styled from 'styled-components'
+
 const Products = ({category}) => {
     return (
         <Wrapper className='section-center'>
             <Category />
-            <ProductsList category={category} />
+            <LoadableProductList category={category} />
         </Wrapper>
     )
 }

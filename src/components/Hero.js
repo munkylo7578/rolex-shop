@@ -5,10 +5,10 @@ import heroImage2 from "../assets/blog10_518c7ab0-ce3f-4092-a34a-be939cb0b851.jp
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useProductsContext } from "../contexts/products_context";
-
+import { memo } from "react/cjs/react.development";
 const Hero = ({ title }) => {
   const { openCategory, updateSort, sort } = useProductsContext();
-
+  
   if (title === "LIÊN HỆ" || title === "GIỚI THIỆU") {
     return (
       <Wrapper>
@@ -159,4 +159,4 @@ const Wrapper = styled.section`
   @media (min-width: 992px) {
   }
 `;
-export default Hero;
+export default memo(Hero);

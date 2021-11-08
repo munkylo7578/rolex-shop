@@ -2,13 +2,15 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useProductsContext } from "../contexts/products_context";
 import { useFilteredContext } from "../contexts/filtered_context";
+import { memo } from "react/cjs/react.development";
 import uniqid from "uniqid";
-
+import { LoadableProduct } from "../loadables";
 import { Loading } from ".";
-
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { GrFormPrevious } from "react-icons/gr";
 import { GrFormNext } from "react-icons/gr";
-import { Product } from ".";
+
 const ProductsList = ({ category }) => {
   const { products, isLoading, sort, sortProduct } = useProductsContext();
 
@@ -24,10 +26,8 @@ const ProductsList = ({ category }) => {
     //eslint-disable-next-line
   }, [sort, category]);
   useEffect(() => {
-    const timer = setTimeout(() => {
-      getProductByCategory(category);
-    }, 0);
-    return () => clearTimeout(timer);
+    getProductByCategory(category);
+
     //eslint-disable-next-line
   }, [category, products, page]);
   if (isLoading) {
@@ -37,7 +37,15 @@ const ProductsList = ({ category }) => {
   return (
     <Wrapper>
       {filteredProducts?.map((product) => {
-        return <Product key={product.id} product={product} />;
+        return (
+          <LoadableProduct
+            fallback={
+              <Skeleton height={250} baseColor="#ccc" borderRadius={10} />
+            }
+            key={product.id}
+            product={product}
+          />
+        );
       })}
       {paginatedArray.length > 1 && (
         <div className="paginate-button__wrapper">
@@ -77,10 +85,9 @@ const ProductsList = ({ category }) => {
 const Wrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
- 
 
   grid-gap: 20px;
-  
+
   .paginate-button__wrapper {
     display: flex;
     align-items: center;
@@ -121,4 +128,4 @@ const Wrapper = styled.section`
   }
 `;
 
-export default ProductsList;
+export default memo(ProductsList);
