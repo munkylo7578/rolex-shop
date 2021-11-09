@@ -1,23 +1,32 @@
 import React from "react";
-
+import loadable from "@loadable/component";
 import "./App.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Header } from "./components";
-import { Home} from "./pages";
-import {LoadableMobileCategory,LoadableSidebar,LoadableModal,LoadableContact,LoadableIntroduction,LoadableProductPage,LoadableCartPage,LoadableSingleProductPage} from "./loadables"
-import uniqid from "uniqid"
-function App() {
+
+import {
+  LoadableMobileCategory,
   
+  LoadableContact,
+  LoadableIntroduction,
+  LoadableProductPage,
+  LoadableCartPage,
+  LoadableSingleProductPage,
+  LoadableHome,
+  LoadableHeader,
+} from "./loadables";
+
+
+function App() {
   return (
     <Router>
-      <LoadableModal />
-      <LoadableSidebar />
+    
       <LoadableMobileCategory />
-      <Header />
+      <LoadableHeader />
       <Switch>
-        <Route exact path="/">
-          <Home />
+        <Route exact path="/" >
+          <LoadableHome />
         </Route>
         <Route path="/contact">
           <LoadableContact title="LIÊN HỆ" />

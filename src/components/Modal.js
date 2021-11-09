@@ -4,20 +4,19 @@ import styled from "styled-components";
 import { useProductsContext } from "../contexts/products_context";
 
 const Modal = () => {
-  const { closeModal,isModalOpen } = useProductsContext();
+  const { closeModal, isModalOpen } = useProductsContext();
 
   return (
     <ModalContainer onClick={closeModal}>
-      <div  className={isModalOpen  ? 'show-modal' : ''}></div>
+      <div className={isModalOpen ? "show-modal" : ""}></div>
     </ModalContainer>
   );
 };
 
 const ModalContainer = styled.div`
-    .show-modal{
-        display: block;
-        z-index: 100;
-    }
+  .show-modal {
+    display: block;
+  }
   div {
     display: none;
     position: fixed;

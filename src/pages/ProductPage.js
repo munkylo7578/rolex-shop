@@ -7,7 +7,7 @@ const ProductPage = ({ category, title }) => {
   return (
     <Wrapper>
       <Hero title={title} />
-      <Products category={category}/>
+      <Products title={title} category={category}/>
     </Wrapper>
   );
 };

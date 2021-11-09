@@ -11,7 +11,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { GrFormPrevious } from "react-icons/gr";
 import { GrFormNext } from "react-icons/gr";
 
-const ProductsList = ({ category }) => {
+const ProductsList = ({ category,title }) => {
   const { products, isLoading, sort, sortProduct } = useProductsContext();
 
   const {
@@ -39,6 +39,7 @@ const ProductsList = ({ category }) => {
       {filteredProducts?.map((product) => {
         return (
           <LoadableProduct
+          title={title}
             fallback={
               <Skeleton height={250} baseColor="#ccc" borderRadius={10} />
             }

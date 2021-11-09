@@ -13,7 +13,7 @@ const IntroSlider = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    fade:!0,
+  
     draggable: true,
     slickPrev: true,
     slickNext: true

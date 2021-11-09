@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 import { FaBars,FaUserAlt,FaSearch } from "react-icons/fa";
 import { BsBag} from "react-icons/bs";
 
-
+import { LoadableModal,LoadableSidebar } from "../loadables";
 import  Navbar  from "./Navbar";
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../contexts/products_context";
@@ -14,6 +14,8 @@ const Header = () => {
 
   return (
     <Wrapper>
+        <LoadableModal />
+      <LoadableSidebar />
       <nav className="sub-nav">
         <div className="section-center">
           <button onClick={openSidebar} className="menu-btn">
@@ -43,7 +45,7 @@ const Header = () => {
 };
 
 const Wrapper = styled.header`
-  
+  z-index: 10;
   
   .section-center {
     border-bottom: 1px solid #f0f0f0;

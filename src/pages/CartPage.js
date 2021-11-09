@@ -5,6 +5,7 @@ const CartPage = () => {
     const history = useHistory()
     const handleBackRoute = ()=>{
         history.goBack()
+      
     }
     return (
         <button onClick ={handleBackRoute}>

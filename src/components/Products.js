@@ -3,11 +3,11 @@ import { Category, ProductsList } from '.'
 import {LoadableProductList} from "../loadables"
 import styled from 'styled-components'
 
-const Products = ({category}) => {
+const Products = ({category,title}) => {
     return (
         <Wrapper className='section-center'>
             <Category />
-            <LoadableProductList category={category} />
+            <LoadableProductList title={title} category={category} />
         </Wrapper>
     )
 }

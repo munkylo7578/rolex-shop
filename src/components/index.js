@@ -12,7 +12,8 @@ import ProductsList from "./ProductsList";
 import MobileCategory from "./MobileCategory";
 import Loading from "./Loading";
 import Product from "./Product"
-import SingleProduct from "./SingleProduct"
+import ProductImage from "./ProductImage"
+import ProductInfo from "./ProductInfo"
 export {
   Header,
   Hero,
@@ -28,5 +29,6 @@ export {
   MobileCategory,
   Loading,
   Product,
-  SingleProduct
+  ProductImage,
+  ProductInfo
 };
