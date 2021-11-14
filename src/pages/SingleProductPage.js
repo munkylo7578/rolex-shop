@@ -7,8 +7,9 @@ import styled from "styled-components";
 import { memo } from "react/cjs/react.development";
 import { useHistory,useLocation } from "react-router-dom";
 const SingleProductPage = () => {
+
     const location = useLocation()
-    
+    const [mainIndex, setMainIndex] = React.useState(0);
   const {
     fetchSingleProduct,
     isSingleProductLoading: loading,
@@ -29,8 +30,8 @@ const SingleProductPage = () => {
       {images?.length > 1 && (
         <section>
           <div className="section-center product-info__wrapper">
-            <ProductImage images={images} />
-            <ProductInfo product={product} title={location.state.from} />
+            <ProductImage mainIndex={mainIndex} setMainIndex={setMainIndex} images={images} />
+            <ProductInfo mainIndex={mainIndex} product={product} title={location.state.from} />
           </div>
         </section>
       )}

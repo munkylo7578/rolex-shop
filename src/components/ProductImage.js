@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,memo } from "react";
 import styled from "styled-components";
 
-const ProductImages = ({ images }) => {
-  const [mainIndex, setMainIndex] = useState(0);
+const ProductImages = ({ images,setMainIndex,mainIndex }) => {
+
   return (
     <Wrapper>
       <img className="main-image" src={images[mainIndex].url} alt="" />
@@ -66,4 +66,4 @@ const Wrapper = styled.article`
     }
   }
 `;
-export default ProductImages;
+export default memo(ProductImages);

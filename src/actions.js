@@ -16,6 +16,7 @@ export const UPDATE_SORT = 'UPDATE_SORT'
 export const SORT_PRODUCT = 'SORT_PRODUCT'
 export const UPDATE_PRICE = 'UPDATE_PRICE'
 export const CHANGE_PRICE = 'CHANGE_PRICE'
+export const ADD_TO_CART = 'ADD_TO_CART'
 
 
 

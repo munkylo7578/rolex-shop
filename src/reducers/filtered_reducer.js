@@ -1,4 +1,3 @@
-
 import {
   MOBILE_CATEGORY_OPEN,
   MOBILE_CATEGORY_CLOSE,
@@ -50,18 +49,18 @@ const filtered_reducer = (state, action) => {
     return { ...state, filteredProducts: tempProducts };
   }
   if (action.type === CHANGE_PAGE) {
+    let tempPage;
     if (action.payload === "next") {
-      let tempPage = state.page + 1;
-
-      return { ...state, page: tempPage };
+      tempPage = state.page + 1;
     }
     if (action.payload === "prev") {
-      let tempPage = state.page - 1;
-
-      return { ...state, page: tempPage };
-    } else {
-      return { ...state, page: action.payload };
+      tempPage = state.page - 1;
     }
+    if (Number.isInteger(action.payload)) {
+      tempPage = action.payload;
+    }
+
+    return { ...state, page: tempPage };
   }
 
   if (action.type === MOBILE_CATEGORY_OPEN) {

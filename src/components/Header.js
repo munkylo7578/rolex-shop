@@ -31,10 +31,10 @@ const Header = () => {
               <span >₫</span>
             </div>
           
-            <div className="cart-container">
+            <Link to="/cart" className="cart-container">
               <BsBag className="cart-icon" />
               <span>0</span>
-            </div>
+            </Link>
           </div>
         </div>
       </nav>
@@ -104,6 +104,7 @@ const Wrapper = styled.header`
         margin-right: 12px;
       }
       .cart-container {
+        
       cursor: pointer;
       display: flex;
       align-items: center;

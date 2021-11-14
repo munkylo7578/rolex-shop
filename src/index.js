@@ -1,16 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import 'normalize.css';
+import "normalize.css";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ProductsProvider } from "./contexts/products_context";
 import { FilteredProvider } from "./contexts/filtered_context";
+import { CartProvider } from "./contexts/cart_context";
 ReactDOM.render(
   <React.StrictMode>
     <ProductsProvider>
       <FilteredProvider>
-        <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
       </FilteredProvider>
     </ProductsProvider>
   </React.StrictMode>,

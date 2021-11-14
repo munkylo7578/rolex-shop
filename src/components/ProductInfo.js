@@ -1,9 +1,35 @@
-import React from "react";
+import React,{memo} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { formatPrice } from "../utils/helper";
-const ProductInfo = ({ title, product }) => {
-  const { name, price } = product;
+import { useCartContext } from "../contexts/cart_context";
+const ProductInfo = ({ title, product,mainIndex }) => {
+
+  const { name, price,images,id,stock } = product;
+  const {addToCart} = useCartContext()
+  const [amount,setAmount] = React.useState(1)
+  const handleSetAmount = (type)=>{
+    
+    if(type === "minus"){
+      setAmount(oldAmount=>{
+        let tempAmount = oldAmount - 1
+        if(tempAmount === 0)
+        {
+          tempAmount = 1
+        }
+        return tempAmount
+      })
+    }
+    if(type === "plus"){
+      setAmount(oldAmount=>{
+        let tempAmount = oldAmount + 1
+        if(tempAmount > stock){
+          tempAmount = stock
+        }
+        return tempAmount
+      })
+    }
+  }
   return (
     <Wrapper>
       <div className="small-hero">
@@ -24,11 +50,11 @@ const ProductInfo = ({ title, product }) => {
       </ul>
       <div className="add-to-cart__wrapper">
         <div className="amount-btn">
-          <button className="amount-btn--minus">-</button>
-          <span>1</span>
-          <button className="amount-btn--plus">+</button>
+          <button onClick={()=>handleSetAmount("minus")} className="amount-btn--minus">-</button>
+          <span>{amount}</span>
+          <button onClick={()=>handleSetAmount("plus")}className="amount-btn--plus">+</button>
         </div>
-        <Link to="/cart" className="add-to-cart">
+        <Link onClick={()=>addToCart(id,name,amount,images[mainIndex].url,price,stock)} to="/cart" className="add-to-cart">
             thêm vào giỏ
         </Link>
       </div>
@@ -87,9 +113,14 @@ const Wrapper = styled.article`
               padding: 8px 10px;
               background-color: #f0f0f0;
               border: 1px solid #ccc;
+              transition: all 0.3s ease-out;
+              :hover{
+                  background-color: #b8b8b8;
+                  cursor: pointer;
+              }
           }
           span{
-              background-color: #f1f1f1;
+              background-color: #fff;
               display: block;
               padding: 9px 10px;
               border: 1px solid #ccc;
@@ -112,4 +143,4 @@ const Wrapper = styled.article`
   }
   
 `;
-export default ProductInfo;
+export default memo(ProductInfo);
