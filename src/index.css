@@ -9,15 +9,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-@font-face {
-  font-family: 'OpenSans';
-  font-style: normal;
- 
-  src: url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap) ;
-  
-}
+
 html{
   letter-spacing: 1px;
+  font-family: 'Open Sans', sans-serif;
 }
 body{
   font-family: OpenSans,sans-serif
@@ -125,3 +120,5 @@ ul{
     top: 27%;
   }
 }
+
+

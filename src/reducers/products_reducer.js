@@ -28,7 +28,7 @@ const products_reducer = (state, action) => {
       tempProduct = state.products.sort((a, b) => b.name.localeCompare(a.name));
     }
     if (state.sort === "default-value") {
-      tempProduct = state.products;
+      tempProduct = state.featuredProducts;
     }
    
     if (state.sort === "lowest-price") {

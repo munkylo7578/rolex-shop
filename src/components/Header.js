@@ -4,14 +4,15 @@ import styled from "styled-components";
 import logo from "../assets/logo.png";
 import { FaBars,FaUserAlt,FaSearch } from "react-icons/fa";
 import { BsBag} from "react-icons/bs";
-
+import {useCartContext} from "../contexts/cart_context"
 import { LoadableModal,LoadableSidebar } from "../loadables";
 import  Navbar  from "./Navbar";
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../contexts/products_context";
+import { formatPrice } from "../utils/helper";
 const Header = () => {
   const {openSidebar} = useProductsContext()
-
+  const {total_item,total_price} = useCartContext()
   return (
     <Wrapper>
         <LoadableModal />
@@ -26,14 +27,13 @@ const Header = () => {
           <div className="nav-right">
             <i className="main-icon--separate"><FaSearch className="main-icon"/></i>
             <i className="main-icon--separate"><FaUserAlt className="main-icon"/></i>
-            <div className="price-wrapper">
-              <span className="test" >0</span>
-              <span >₫</span>
-            </div>
+            <div className="price__wrapper">
+              {formatPrice(total_price)}
+             </div>
           
             <Link to="/cart" className="cart-container">
               <BsBag className="cart-icon" />
-              <span>0</span>
+              <span>{total_item}</span>
             </Link>
           </div>
         </div>
@@ -79,7 +79,7 @@ const Wrapper = styled.header`
       display: flex;
       align-items: center;
       .main-icon{
-        font-size: 1.1rem;
+        font-size: 1rem;
         margin-right: 46px;
         display: none;
         color: #818181;
@@ -98,9 +98,10 @@ const Wrapper = styled.header`
       span:nth-child(2){
         margin-top: 2px;
       }
-      .price-wrapper{
-        display: flex;
-        align-items: center;
+      .price__wrapper{
+        display: none;
+        font-size: 0.9rem;
+        color: #818181;
         margin-right: 12px;
       }
       .cart-container {
@@ -139,6 +140,9 @@ const Wrapper = styled.header`
     }
     
     .nav-right{
+      .price__wrapper{
+        display: block;
+      }
       .main-icon{
         display: block;
       }

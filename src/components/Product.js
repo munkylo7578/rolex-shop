@@ -2,7 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../utils/helper";
 import styled from "styled-components";
+import { useCartContext } from "../contexts/cart_context";
 const Product = ({ product, title }) => {
+  const {id,name,amount,images,price,stock} = product
+  const {addToCart} = useCartContext()
   return (
     <Wrapper key={product.id}>
       <Link
@@ -18,7 +21,7 @@ const Product = ({ product, title }) => {
         <p>{product.name}</p>
         <div>{formatPrice(product.price)}</div>
       </Link>
-      <Link to="/cart" className="btn--add-product">
+      <Link onClick={()=>addToCart(id,name,1,images[0].url,price,stock)} to="/cart" className="btn--add-product">
         +
       </Link>
     </Wrapper>

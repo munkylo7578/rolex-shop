@@ -14,6 +14,10 @@ import Loading from "./Loading";
 import Product from "./Product"
 import ProductImage from "./ProductImage"
 import ProductInfo from "./ProductInfo"
+import CartHeading from "./CartHeading"
+import CartItem from "./CartItem"
+import NoCart from "./NoCart"
+import CartPrice from "./CartPrice"
 export {
   Header,
   Hero,
@@ -30,5 +34,9 @@ export {
   Loading,
   Product,
   ProductImage,
-  ProductInfo
+  ProductInfo,
+  CartHeading,
+  CartItem,
+  NoCart,
+  CartPrice
 };

@@ -17,6 +17,9 @@ export const SORT_PRODUCT = 'SORT_PRODUCT'
 export const UPDATE_PRICE = 'UPDATE_PRICE'
 export const CHANGE_PRICE = 'CHANGE_PRICE'
 export const ADD_TO_CART = 'ADD_TO_CART'
+export const REMOVE_CART = 'REMOVE_CART'
+export const CAlCULATE_AMOUNT = 'CAlCULATE_AMOUNT'
+export const TOGGLE_AMOUNT = 'TOGGLE_AMOUNT'
 
 
 
