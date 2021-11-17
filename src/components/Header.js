@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { useProductsContext } from "../contexts/products_context";
 import { formatPrice } from "../utils/helper";
 const Header = () => {
-  const {openSidebar} = useProductsContext()
+  const {openSidebar,openForm} = useProductsContext()
   const {total_item,total_price} = useCartContext()
   return (
     <Wrapper>
@@ -26,7 +26,7 @@ const Header = () => {
           <Link to='/'><img src={logo} alt="" /></Link>
           <div className="nav-right">
             <i className="main-icon--separate"><FaSearch className="main-icon"/></i>
-            <i className="main-icon--separate"><FaUserAlt className="main-icon"/></i>
+            <i className="main-icon--separate"><FaUserAlt onClick={openForm} className="main-icon"/></i>
             <div className="price__wrapper">
               {formatPrice(total_price)}
              </div>

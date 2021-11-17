@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { useProductsContext } from "../contexts/products_context";
 const Sidebar = () => {
   const [brandsCategoryOpen, setBrandsCategoryOpen] = useState(false);
-  const { isSidebarOpen,closeModal } = useProductsContext();
+  const { isSidebarOpen,closeSidebar } = useProductsContext();
   return (
     <SidebarContainer >
       <aside className={isSidebarOpen ? 'show-sidebar' : ''}>
@@ -38,7 +38,7 @@ const Sidebar = () => {
                   {types.map((type) => {
                     return (
                       <li key={Math.random()}>
-                        <Link onClick={closeModal} to={type.url}>{type.name}</Link>
+                        <Link onClick={closeSidebar} to={type.url}>{type.name}</Link>
                       </li>
                     );
                   })}
@@ -48,7 +48,7 @@ const Sidebar = () => {
           } else {
             return (
               <li key={id}>
-                <Link onClick={closeModal} className="link" to={url}>
+                <Link onClick={closeSidebar} className="link" to={url}>
                   {text}
                 </Link>
               </li>
@@ -61,7 +61,7 @@ const Sidebar = () => {
       </p>
       
       </aside>
-      <IoClose  onClick={closeModal} className={isSidebarOpen ? 'close-icon show-icon ': 'close-icon'} />
+      <IoClose  onClick={closeSidebar} className={isSidebarOpen ? 'close-icon show-icon ': 'close-icon'} />
     </SidebarContainer>
   );
 };

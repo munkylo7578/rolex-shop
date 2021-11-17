@@ -8,6 +8,7 @@ export const LoadableHome = loadable(() => import("../pages/HomePage"));
 export const LoadableMobileCategory = loadable(()=>import("../components/MobileCategory"))
 export const LoadableSidebar = loadable(()=>import("../components/Sidebar"))
 export const LoadableModal = loadable(()=>import("../components/Modal"))
+export const LoadableLoginForm = loadable(()=>import("../components/Form/LoginForm"))
 export const LoadableContact = loadable(()=>import("../pages/Contact"))
 export const LoadableIntroduction = loadable(()=>import("../pages/Introduction"))
 export const LoadableProductPage = loadable(()=>import("../pages/ProductPage"))

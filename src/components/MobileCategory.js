@@ -5,7 +5,7 @@ import styled from "styled-components";
 import uniqid from "uniqid";
 import { useProductsContext } from "../contexts/products_context";
 const MobileCategory = () => {
-  const {isCategoryOpen,closeModal} = useProductsContext()
+  const {isCategoryOpen,closeCategory} = useProductsContext()
 
   return (
     <Wrapper>
@@ -18,7 +18,7 @@ const MobileCategory = () => {
                 return (
                   <li key={uniqid()}>
                     <NavLink
-                      onClick={closeModal}
+                      onClick={closeCategory}
                       activeStyle={{
                         color: "var(--primary-color)",
                       }}
@@ -36,7 +36,7 @@ const MobileCategory = () => {
               return (
                 <li key={uniqid()}>
                   <NavLink
-                    onClick={closeModal}
+                    onClick={closeCategory}
                     activeStyle={{
                       color: "var(--primary-color)",
                     }}

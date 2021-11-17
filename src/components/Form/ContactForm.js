@@ -50,7 +50,7 @@ const ContactForm = () => {
               },
             })}
           />
-          {errors.user_name && <p>{errors.user_name.message}</p>}
+          {errors.user_name && <p className="error-message">{errors.user_name.message}</p>}
         </div>
 
         <div className="form-control">
@@ -68,7 +68,7 @@ const ContactForm = () => {
               },
             })}
           />
-          {errors.user_email && <p>{errors.user_email.message}</p>}
+          {errors.user_email && <p className="error-message">{errors.user_email.message}</p>}
         </div>
         <div className="form-control">
           <input
@@ -84,7 +84,7 @@ const ContactForm = () => {
             })}
           />
           {errors.user_phone_number && (
-            <p>{errors.user_phone_number.message}</p>
+            <p className="error-message">{errors.user_phone_number.message}</p>
           )}
         </div>
         <div className="form-control">
@@ -104,7 +104,7 @@ const ContactForm = () => {
               },
             })}
           />
-          {errors.user_message && <p>{errors.user_message.message}</p>}
+          {errors.user_message && <p className="error-message">{errors.user_message.message}</p>}
         </div>
 
         <button disabled={!formState.isValid} type="submit">
@@ -131,17 +131,7 @@ const Wrapper = styled.article`
     .form-control {
       width: 100%;
       height: 100%;
-      p {
-        color: #bf1650;
-        height: 20%;
-        width: 100%;
-        margin: 2px 0;
-      }
-
-      p::before {
-        display: inline;
-        content: "⚠ ";
-      }
+     
     }
     .form-control:nth-child(5) {
       grid-column: 1 / span 2;

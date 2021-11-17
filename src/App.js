@@ -15,13 +15,14 @@ import {
   LoadableSingleProductPage,
   LoadableHome,
   LoadableHeader,
+  LoadableLoginForm,
 } from "./loadables";
 
 
 function App() {
   return (
     <Router>
-    
+      <LoadableLoginForm />
       <LoadableMobileCategory />
       <LoadableHeader />
       <Switch>

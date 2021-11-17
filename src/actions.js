@@ -20,6 +20,8 @@ export const ADD_TO_CART = 'ADD_TO_CART'
 export const REMOVE_CART = 'REMOVE_CART'
 export const CAlCULATE_AMOUNT = 'CAlCULATE_AMOUNT'
 export const TOGGLE_AMOUNT = 'TOGGLE_AMOUNT'
+export const FORM_OPEN = 'FORM_OPEN'
+export const USER_REGISTER = 'USER_REGISTER'
 
 
 

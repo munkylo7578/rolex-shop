@@ -8,7 +8,7 @@ import { slider1, slider2, slider3_1, slider3_2, slider3_3 } from "../assets";
 import { Link } from "react-router-dom";
 const IntroSlider = () => {
   const settings = {
-    dots: true,
+   
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -22,7 +22,7 @@ const IntroSlider = () => {
     <Wrapper>
       <Slider className="slider" {...settings}>
         <div className="slide slide-1  ">
-          <img src={slider1} alt="slider1" className="swiper-lazy" />
+          <img src={slider1} alt="slider1" />
           <div className="slide-content">
             <blockquote>
               <h5>BỘ SƯU TẬP ĐỒNG HỒ</h5>
@@ -48,7 +48,7 @@ const IntroSlider = () => {
 };
 const Wrapper = styled.section`
   .slider{
-  
+    overflow: hidden;
   }
   .slide {
     width: 100%;

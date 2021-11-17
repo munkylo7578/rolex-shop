@@ -11,7 +11,7 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
   SORT_PRODUCT,
   UPDATE_SORT,
-  
+  FORM_OPEN
   
 } from "../actions";
 
@@ -73,13 +73,17 @@ const products_reducer = (state, action) => {
       isModalOpen: false,
       isSidebarOpen: false,
       isCategoryOpen: false,
+      isFormOpen: false
     };
   }
+  if(action.type === FORM_OPEN){
+    return{...state,isFormOpen: true,isModalOpen:true}
+}
   if (action.type === SIDEBAR_OPEN) {
     return {
       ...state,
       isSidebarOpen: true,
-      isModalOpen: true,
+   
     };
   }
   if (action.type === SIDEBAR_CLOSE) {
