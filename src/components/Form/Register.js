@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 
 import { useUserContext } from "../../contexts/user_context";
 import swal from "sweetalert";
-const Register = ({setActiveForm}) => {
-  
-  const { registerAccount } = useUserContext();
+import { useReducer } from "react/cjs/react.development";
+const Register = ({ setActiveForm }) => {
+  const { registerAccount, users } = useUserContext();
 
   const {
     register,
@@ -20,15 +20,27 @@ const Register = ({setActiveForm}) => {
   });
 
   const onSubmit = (data) => {
-    registerAccount(data);
-    swal({
-      title: "Chúc mừng!",
-      text: "Bạn đã đăng kí tài khoản thành công!",
-      icon: "success",
-      button: "ĐĂNG NHẬP"
-    }).then(()=>setActiveForm(0))
    
-    reset();
+    const tempUser = users?.find((user) => user.user_email === data.user_email);
+    if (tempUser) {
+      swal({
+        title: "Thất bại!",
+        text: "Email đã được sử dụng !",
+        icon: "error",
+        button: "ĐĂNG KÍ LẠI",
+      });
+    } else {
+      registerAccount(data);
+      swal({
+        title: "Chúc mừng!",
+        text: "Bạn đã đăng kí tài khoản thành công!",
+        icon: "success",
+        button: "ĐĂNG NHẬP",
+      }).then(() => setActiveForm(0));
+      reset();
+    }
+
+
   };
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>

@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { LoadableModal } from "../../loadables";
 import styled from "styled-components";
 import Login from "./Login";
@@ -6,22 +6,31 @@ import Register from "./Register";
 import { useProductsContext } from "../../contexts/products_context";
 const LoginForm = () => {
   const { isFormOpen } = useProductsContext();
-  const [activeForm,setActiveForm] = useState(0)
-  
+  const [activeForm, setActiveForm] = useState(0);
+
   return (
     <Wrapper>
       <LoadableModal />
       <div className={isFormOpen ? "form__wrapper show-form" : "form__wrapper"}>
         <div className="main-form">
           <div className="change-form__wrapper">
-            <button onClick={()=>setActiveForm(0)} className={activeForm === 0 ? "active":null}>đăng nhập</button>
-            <span  >/</span>
-            <button onClick={()=>setActiveForm(1)} className={activeForm === 1 ? "active":null}>đăng kí</button>
+            <button
+              onClick={() => setActiveForm(0)}
+              className={activeForm === 0 ? "active" : null}
+            >
+              đăng nhập
+            </button>
+            <span>/</span>
+            <button
+              onClick={() => setActiveForm(1)}
+              className={activeForm === 1 ? "active" : null}
+            >
+              đăng kí
+            </button>
           </div>
 
-          {activeForm === 1 && <Register setActiveForm={setActiveForm}/>}
-          {activeForm === 0 && <Login  />}
-          
+          {activeForm === 1 && <Register setActiveForm={setActiveForm} />}
+          {activeForm === 0 && <Login />}
         </div>
       </div>
     </Wrapper>
@@ -48,7 +57,7 @@ const Wrapper = styled.div`
       padding: 32px 20px;
       .change-form__wrapper {
         text-align: center;
-        span{
+        span {
           color: #ccc;
           font-size: 1.2rem;
           margin: 0 8px;
@@ -67,8 +76,8 @@ const Wrapper = styled.div`
             color: var(--primary-color);
           }
         }
-        .active{
-          color:var(--primary-color);
+        .active {
+          color: var(--primary-color);
         }
       }
     }
@@ -99,15 +108,12 @@ const Wrapper = styled.div`
         margin-bottom: 2px;
       }
     }
-  }
-  .register-btn {
+    button {
+      padding: 12px 32px;
 
-    padding: 12px 32px;
- 
-    font-weight: 560x;
-    font-size: 1.1rem;
-  
-    
+      font-weight: 560x;
+      font-size: 1.1rem;
+    }
   }
 `;
 export default LoginForm;
