@@ -7,10 +7,12 @@ const user_reducer = (state,action) => {
         return {...state,users:[...state.users,action.payload]}
     }
     if(action.type === USER_LOGOUT){
+     
         return {...state,isLogin:false}
     }
     if(action.type === USER_LOGIN){
-        return {...state,isLogin:true}
+
+        return {...state,isLogin:true,currentUser:action.payload}
     }
     throw new Error(`No Matching "${action.type}" - action type`);
 }

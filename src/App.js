@@ -16,6 +16,7 @@ import {
   LoadableHome,
   LoadableHeader,
   LoadableLoginForm,
+  LoadableCheckoutPage
 } from "./loadables";
 
 
@@ -64,6 +65,9 @@ function App() {
         </Route>
         <Route path="/cart">
           <LoadableCartPage />
+        </Route>
+        <Route exact path="/checkout">
+            <LoadableCheckoutPage />
         </Route>
       </Switch>
     </Router>

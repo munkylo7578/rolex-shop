@@ -30,7 +30,7 @@ const Login = () => {
         icon: "success",
         button: "tiếp tục mua hàng",
       })
-        .then(login)
+        .then(login(isInfoCorrect))
         .then(closeModal);
     } else {
       swal({

@@ -8,7 +8,8 @@ const loginStatus =JSON.parse(localStorage.getItem("loginStatus"))
 console.log(loginStatus)
 const initialState = {
     users:userStorage,
-    isLogin: loginStatus
+    isLogin: loginStatus,
+    currentUser: {}
 }
 export const UserProvider = ({children}) => {
     const [state,dispatch] = useReducer(reducer,initialState)
@@ -16,8 +17,8 @@ export const UserProvider = ({children}) => {
         dispatch({type:USER_REGISTER,payload:data})
        
     }
-    const login = ()=>{
-        dispatch({type:USER_LOGIN})
+    const login = (user)=>{
+        dispatch({type:USER_LOGIN,payload:user})
     }
     const logout = ()=>{
         dispatch({type:USER_LOGOUT})

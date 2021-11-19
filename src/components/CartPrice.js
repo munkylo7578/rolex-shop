@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { formatPrice } from "../utils/helper";
 import { useCartContext } from "../contexts/cart_context";
+import { Link } from "react-router-dom";
 const CartPrice = () => {
   const { total_price } = useCartContext();
   return (
@@ -19,7 +20,7 @@ const CartPrice = () => {
         <p>Tổng</p>
         <strong>{formatPrice(total_price)}</strong>
       </div>
-      <button>TIẾN HÀNH THANH TOÁN</button>
+      <Link to="/checkout">TIẾN HÀNH THANH TOÁN</Link>
     </Wrapper>
   );
 };
@@ -40,7 +41,8 @@ const Wrapper = styled.div`
   div:last-child {
     border-bottom: 3px solid #ececec;
   }
-  button {
+  a {
+    display: block;
     background-color: var(--primary-color);
     transition: all 0.3s ease-out;
     color: white;
@@ -48,9 +50,10 @@ const Wrapper = styled.div`
     margin-top: 24px;
     cursor: pointer;
     padding: 8px 20px;
+    padding-left: 27%;
     letter-spacing: 1px;
     border: none;
-    width: 100%;
+ 
     :hover {
       background-color: #ccaa7e;
     }

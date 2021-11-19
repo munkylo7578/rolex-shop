@@ -3,6 +3,7 @@ import styled from "styled-components";
 import emailjs from "emailjs-com";
 import { init } from "emailjs-com";
 import { useForm } from "react-hook-form";
+import swal from "sweetalert";
 const ContactForm = () => {
   const {
     register,
@@ -17,8 +18,13 @@ const ContactForm = () => {
   const onSubmit = () => {
     init("user_CtSuJmZEuGorDdqw6pBVM");
     emailjs.sendForm("service_21lv67m", "template_87ggqww", form.current).then(
-      (result) => {
-        console.log(result)
+      () => {
+        swal({
+          title: "Thành công",
+          text: "Bạn đã gửi thông tin thành công!",
+          icon: "success",
+          button: "ok",
+        });
       },
       (error) => {
         console.log(error.text);
@@ -110,7 +116,7 @@ const ContactForm = () => {
         <button disabled={!formState.isValid} type="submit">
           GỬI
         </button>
-        <div className="error-message"></div>
+      
       </form>
     </Wrapper>
   );
