@@ -60,7 +60,7 @@ const Wrapper = styled.div`
             background-color: transparent;
             color: #ccc;
             border: 2px solid #ccc;
-            padding: 1px 4px;
+            padding: 1px 5px;
             transition: all 0.2s ease-in;
             font-weight: 540;
             :hover {
@@ -68,7 +68,12 @@ const Wrapper = styled.div`
               color: black;
               cursor: pointer;
             }
+            @media(min-width: 662px){
+              top: -15px;
+              left: -2px;
+            }
           }
+          
         }
         img {
           height: 80px;
@@ -113,7 +118,7 @@ const Wrapper = styled.div`
         }
 
         @media (min-width: 662px) {
-          grid-template-columns: 15px 100px auto 120px 80px 120px;
+          grid-template-columns: 20px 75px auto 120px 80px 120px;
           .cart-item__price,
           .cart-item__total-price {
             display: block;
@@ -129,6 +134,7 @@ const Wrapper = styled.div`
             display: none;
           }
         }
+       
       
 `
 export default CartItem

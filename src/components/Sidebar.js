@@ -138,7 +138,7 @@ const SidebarContainer = styled.div`
   a {
     display: block;
     padding: 20px 30px 20px 20px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #818181;
     border-top: 1px solid #efefef;
     border-bottom: 1px solid #efefef;
@@ -182,7 +182,7 @@ const SidebarContainer = styled.div`
 
     p {
       text-transform: uppercase;
-      font-size: 1rem;
+      font-size: 0.9rem;
       color: #818181;
       margin-left: 20px;
       padding-bottom: 20px;

@@ -11,7 +11,7 @@ const CartPage = () => {
     history.goBack();
   };
   if (cart.length === 0) {
-    return <NoCart handleBackRoute={handleBackRoute} />;
+    return <NoCart  />;
   }
 
   return (

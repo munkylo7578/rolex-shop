@@ -2,9 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { formatPrice } from "../utils/helper";
 import { useCartContext } from "../contexts/cart_context";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useUserContext } from "../contexts/user_context";
+import { useProductsContext } from "../contexts/products_context";
 const CartPrice = () => {
+  const history = useHistory();
   const { total_price } = useCartContext();
+  const { isLogin } = useUserContext();
+  const { openForm } = useProductsContext();
   return (
     <Wrapper>
       <h5>TỔNG SỐ LƯỢNG</h5>
@@ -20,7 +25,15 @@ const CartPrice = () => {
         <p>Tổng</p>
         <strong>{formatPrice(total_price)}</strong>
       </div>
-      <Link to="/checkout">TIẾN HÀNH THANH TOÁN</Link>
+      {
+        isLogin ?  <button className="primary-btn" onClick={() => history.push("/checkout")}>
+        TIẾN HÀNH THANH TOÁN
+      </button>
+      :  <button className="primary-btn" onClick={openForm}>
+      ĐĂNG NHẬP ĐỂ THANH TOÁN
+    </button>
+      }
+     
     </Wrapper>
   );
 };
@@ -41,19 +54,11 @@ const Wrapper = styled.div`
   div:last-child {
     border-bottom: 3px solid #ececec;
   }
-  a {
-    display: block;
-    background-color: var(--primary-color);
-    transition: all 0.3s ease-out;
-    color: white;
-    font-weight: 500;
+  button {
     margin-top: 24px;
-    cursor: pointer;
+    width: 100%;
     padding: 8px 20px;
-    padding-left: 27%;
-    letter-spacing: 1px;
-    border: none;
- 
+
     :hover {
       background-color: #ccaa7e;
     }

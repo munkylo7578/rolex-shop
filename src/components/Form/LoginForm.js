@@ -7,7 +7,7 @@ import { useProductsContext } from "../../contexts/products_context";
 const LoginForm = () => {
   const { isFormOpen } = useProductsContext();
   const [activeForm, setActiveForm] = useState(0);
-
+  console.log("test")
   return (
     <Wrapper>
       <LoadableModal />

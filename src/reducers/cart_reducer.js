@@ -1,11 +1,18 @@
 import {
   ADD_TO_CART,
   CAlCULATE_AMOUNT,
+  CLEAR_CART,
   REMOVE_CART,
   TOGGLE_AMOUNT,
 } from "../actions";
 
 const cart_reducer = (state, action) => {
+  if(action.type === CLEAR_CART){
+    return {
+      ...state,
+      cart:[]
+    }
+  }
   if (action.type === TOGGLE_AMOUNT) {
     const { id, type } = action.payload;
     const tempCart = state.cart.map((item) => {
@@ -29,6 +36,7 @@ const cart_reducer = (state, action) => {
     return { ...state, cart: tempCart };
   }
   if (action.type === CAlCULATE_AMOUNT) {
+    
     const { total_item, total_price } = state.cart.reduce(
       (total, item) => {
         total.total_item += item.amount;
@@ -48,7 +56,7 @@ const cart_reducer = (state, action) => {
   }
   if (action.type === ADD_TO_CART) {
     const { image, amount, id, price, name, stock } = action.payload;
-
+    
     const tempItem = state.cart.find((item) => item.id === image + id);
     if (tempItem) {
       const tempArray = state.cart.map((item) => {

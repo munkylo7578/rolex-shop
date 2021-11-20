@@ -18,6 +18,8 @@ import CartHeading from "./CartHeading"
 import CartItem from "./CartItem"
 import NoCart from "./NoCart"
 import CartPrice from "./CartPrice"
+import CheckoutInfo from "./CheckoutInfo";
+import CheckoutPrice from "./CheckoutPrice";
 export {
   Header,
   Hero,
@@ -38,5 +40,7 @@ export {
   CartHeading,
   CartItem,
   NoCart,
-  CartPrice
+  CartPrice,
+  CheckoutInfo,
+  CheckoutPrice
 };

@@ -1,5 +1,5 @@
 import React, { useContext, useReducer,useEffect } from "react";
-import { ADD_TO_CART, REMOVE_CART,CAlCULATE_AMOUNT, TOGGLE_AMOUNT } from "../actions";
+import { ADD_TO_CART, REMOVE_CART,CAlCULATE_AMOUNT, TOGGLE_AMOUNT, CLEAR_CART } from "../actions";
 import reducer from "../reducers/cart_reducer";
 const cartStorage = JSON.parse(localStorage.getItem('cart'))
 
@@ -23,13 +23,17 @@ export const CartProvider = ({ children }) => {
   const toggleAmount = (id,type)=>{
     dispatch({type:TOGGLE_AMOUNT,payload:{id,type}})
   }
+  const clearCart = ()=>{
+    dispatch({type:CLEAR_CART})
+  }
   useEffect(() => {
     
     dispatch({type:CAlCULATE_AMOUNT})
+   
     localStorage.setItem("cart",JSON.stringify(state.cart))
   }, [state.cart])
   return (
-    <CartContext.Provider value={{ ...state, addToCart,removeCart,toggleAmount }}>
+    <CartContext.Provider value={{ ...state, addToCart,removeCart,toggleAmount,clearCart }}>
       {children}
     </CartContext.Provider>
   );

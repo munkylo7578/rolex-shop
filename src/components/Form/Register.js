@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 
 import { useUserContext } from "../../contexts/user_context";
-import swal from "sweetalert";
-import { useReducer } from "react/cjs/react.development";
+
 const Register = ({ setActiveForm }) => {
-  const { registerAccount, users } = useUserContext();
+  const { registerAccount } = useUserContext();
 
   const {
     register,
     formState: { errors },
     reset,
-    formState,
+
     handleSubmit,
     watch,
   } = useForm({
@@ -20,50 +19,30 @@ const Register = ({ setActiveForm }) => {
   });
 
   const onSubmit = (data) => {
-   
-    const tempUser = users?.find((user) => user.user_email === data.user_email);
-    if (tempUser) {
-      swal({
-        title: "Thất bại!",
-        text: "Email đã được sử dụng !",
-        icon: "error",
-        button: "ĐĂNG KÍ LẠI",
-      });
-    } else {
-      registerAccount(data);
-      swal({
-        title: "Chúc mừng!",
-        text: "Bạn đã đăng kí tài khoản thành công!",
-        icon: "success",
-        button: "ĐĂNG NHẬP",
-      }).then(() => setActiveForm(0));
-      reset();
-    }
-
-
+    registerAccount(data, reset, setActiveForm);
   };
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <div className="form-control">
-        <label htmlFor="">Họ và tên</label>
+        <label htmlFor="">Tên đăng nhập</label>
         <input
           type="text"
           name="user_name"
-          placeholder="Họ và tên"
+          placeholder="Tên đăng nhập"
           {...register("user_name", {
             required: "Hãy nhập vào đây",
             minLength: {
-              value: 5,
-              message: "tên phải dài tối thiểu 5 kí tự",
+              value: 3,
+              message: "tên đăng nhập dài tối thiểu 3 kí tự",
             },
             maxLength: {
-              value: 30,
-              message: "Tên tối đa dài 20 kí tự",
+              value: 20,
+              message: "Tên đăng nhập dài tối đa dài 20 kí tự",
             },
             pattern: {
               value:
-                /[^a-z0-9A-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]/,
-              message: "Nhập tên không hợp lệ",
+              /^\S*$/,
+              message: "Tên đăng nhập không hợp lệ",
             },
           })}
         />

@@ -1,26 +1,27 @@
-import React from 'react'
-import styled from "styled-components"
-const NoCart = ({handleBackRoute}) => {
-    return (
-        <NoCartWrapper>
-        <section>
-          <div>
-            <p>Chưa có sản phẩm nào trong giỏ hàng</p>
-            <button onClick={handleBackRoute}>Quay trở lại cửa hàng</button>
-          </div>
-        </section>
-      </NoCartWrapper>
-    )
-}
+import React from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import styled from "styled-components";
+const NoCart = ({ handleBackRoute }) => {
+  return (
+    <NoCartWrapper>
+      <section>
+        <div>
+          <p>Chưa có sản phẩm nào trong giỏ hàng</p>
+          <Link to="/cua-hang">Quay trở lại cửa hàng</Link>
+        </div>
+      </section>
+    </NoCartWrapper>
+  );
+};
 const NoCartWrapper = styled.main`
   div {
     margin-top: 62px;
     text-align: center;
-    button {
+    a {
+      display: inline-block;
       text-transform: uppercase;
       cursor: pointer;
-      outline: none;
-      border: none;
+
       margin-top: 20px;
       padding: 12px 20px;
       background-color: var(--primary-color);
@@ -34,4 +35,4 @@ const NoCartWrapper = styled.main`
     }
   }
 `;
-export default NoCart
+export default NoCart;
