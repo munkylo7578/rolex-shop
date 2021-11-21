@@ -34,7 +34,7 @@ const Wrapper = styled.article`
   border-bottom: 1px solid #ececec;
   transition: all 0.5s ease-in;
   padding-bottom: 10px;
-  height: 290px;
+  height: 320px;
   @media (min-width: 772px) {
     grid-template-rows: 320px;
 

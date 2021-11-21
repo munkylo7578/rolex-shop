@@ -102,4 +102,4 @@ export const routes = [
     category: "casio",
   },
 ];
-export const products_url = "http://localhost:8888/api/danh-muc";
+export const products_url = "https://rolex-shop.herokuapp.com/api/danh-muc";

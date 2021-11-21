@@ -5,40 +5,26 @@ import {
   USER_LOGIN,
   USER_LOGOUT,
   USER_REGISTER,
+  GET_ORDER
 } from "../actions";
 import uniqid from "uniqid";
 import firebase from "../firebase";
 import * as dayjs from "dayjs";
 import "dayjs/locale/vi";
 const user_reducer = (state, action) => {
-  if (action.type === GET_ORDERS) {
-    const time = dayjs().locale("vi").format("D MMMM [năm] YYYY");
-    const orderRef = firebase.database().ref(`Order/${state.currentUser}`);
-    orderRef.on("value",(snapshot)=>{
-      const data = snapshot.val()
-      console.log(data)
-      for(let id in data){
-        console.log(id,data[id])
-      }
-    })
-    const tempObj = {
-      id: time,
-      ...action.payload,
-    };
-    if (state.orders == null) {
-      return { ...state, orders: [tempObj] };
-    } else {
-      return { ...state, orders: [...state.orders, tempObj] };
-    }
+  if(action.type === GET_ORDER){
+    const tempOrder = state.orders.find(order=>order.id === action.payload)
+  
+    return{...state}
   }
+ 
 
   if (action.type === USER_LOGOUT) {
-    return { ...state, isLogin: false,currentUser: "" };
+    return { ...state, isLogin: false, currentUser: "", orders: [] };
   }
   if (action.type === USER_LOGIN) {
-    
-    
-    return { ...state, isLogin: true, currentUser: action.payload.user_name};
+   
+    return { ...state, isLogin: true, currentUser: action.payload.user.user_name,orders:[...action.payload.orderList] };
   }
   throw new Error(`No Matching "${action.type}" - action type`);
 };

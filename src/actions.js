@@ -26,6 +26,8 @@ export const USER_LOGIN = 'USER_LOGIN'
 export const USER_LOGOUT = 'USER_LOGOUT'
 export const GET_ORDERS = 'GET_ORDERS'
 export const CLEAR_CART = 'CLEAR_CART'
+export const GET_ORDER = 'GET_ORDER'
+export const GET_CURRENT_USER = 'GET_CURRENT_USER'
 
 
 

@@ -17,7 +17,8 @@ import {
   LoadableHeader,
   LoadableLoginForm,
   LoadableCheckoutPage,
-  LoadableOrdersPage
+  LoadableOrdersPage,
+  LoadableViewOrder
 } from "./loadables";
 
 
@@ -70,8 +71,11 @@ function App() {
         <Route exact path="/checkout">
             <LoadableCheckoutPage />
         </Route>
-        <Route exact path="/orders">
+        <Route exact path="/tai-khoan/orders">
             <LoadableOrdersPage />
+        </Route>
+        <Route path="/tai-khoan/orders/view-order/:id">
+            <LoadableViewOrder />
         </Route>
       </Switch>
     </Router>

@@ -1,6 +1,6 @@
 import loadable from '@loadable/component'
 import pMinDelay from 'p-min-delay'
-import {lazy,Suspense} from "react"
+
 
 export const LoadableHeader = loadable(() => import("../components/Header"));
 export const LoadableNavbar = loadable(() => import("../components/Navbar"));
@@ -15,6 +15,7 @@ export const LoadableProductPage = loadable(()=>import("../pages/ProductPage"))
 export const LoadableSingleProductPage = loadable(()=>import("../pages/SingleProductPage"))
 export const LoadableCartPage = loadable(()=>import("../pages/CartPage"))
 export const LoadableCheckoutPage = loadable(()=>import("../pages/CheckoutPage"))
+export const LoadableViewOrder = loadable(()=>import("../pages/ViewOrder"))
 export const LoadableOrdersPage = loadable(()=>import("../pages/OrdersPage"))
 export const LoadableIntroSlider = loadable(()=>(import("../components/IntroSlider")))
 export const LoadableProductList = loadable(()=>pMinDelay(import("../components/ProductsList"),0))

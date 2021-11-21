@@ -2,7 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 import logo from "../assets/logo.png";
-import { FaBars, FaUserAlt, FaSearch } from "react-icons/fa";
+import { FaBars, FaUserAlt, FaSearch, FaUserPlus } from "react-icons/fa";
 import { BsBag } from "react-icons/bs";
 import { useCartContext } from "../contexts/cart_context";
 import { LoadableModal, LoadableSidebar } from "../loadables";
@@ -14,7 +14,7 @@ import { useUserContext } from "../contexts/user_context";
 const Header = () => {
   const { openSidebar, openForm } = useProductsContext();
   const { total_item, total_price } = useCartContext();
-  const { isLogin,logout } = useUserContext();
+  const { isLogin, logout } = useUserContext();
 
   return (
     <Wrapper>
@@ -30,16 +30,26 @@ const Header = () => {
             <img src={logo} alt="" />
           </Link>
           <div className="nav-right">
-           <div className="main-icon--separate " >
-              <FaSearch className="main-icon " />
-           </div>
-           <div className="main-icon--separate " >
+            <div className="main-icon--separate ">
               {isLogin ? (
-                <button onClick={logout} className="main-icon">Đăng xuất</button>
+                <div className="user-info">
+                  <FaUserAlt className="main-icon" />
+                  <ul>
+                    <li>
+                      <Link to="/tai-khoan/orders">Đơn hàng</Link>
+                    </li>
+                    <li>
+                      <Link>Thông tin tài khoản</Link>
+                    </li>
+                    <li>
+                      <button onClick={logout}>Đăng xuất</button>
+                    </li>
+                  </ul>
+                </div>
               ) : (
-                <FaUserAlt onClick={openForm} className="main-icon" />
+                <FaUserPlus onClick={openForm} className="main-icon" />
               )}
-           </div>
+            </div>
             <div className="price__wrapper">{formatPrice(total_price)}</div>
 
             <Link to="/cart" className="cart-container">
@@ -86,15 +96,83 @@ const Wrapper = styled.header`
   .nav-right {
     display: flex;
     align-items: center;
+    .user-info {
+      position: relative;
+      z-index: 100;
+      ul {
+        position: absolute;
+        top: 170%;
+        right: -500%;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease-in-out;
+        z-index: 20;
+        border-radius: 2px;
+        border: 1px solid #ccc;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        
+        ::after {
+          position: absolute;
+          content: "";
+          height: 30px;
+          width: 100px;
+          background-color: transparent;
+          top: -15%;
+          left: 30%;
+        }
+        ::before {
+          position: absolute;
+          content: "";
+          border-color: transparent transparent white transparent;
+          border-width: 10px;
+          border-style: solid;
+          top: -10%;
+          right: 50%;
+          transform: translateX(50%);
+        }
+        li {
+          a {
+            padding: 20px 60px 20px 20px;
+            display: block;
+            white-space: nowrap;
+            color: var(--primary-color);
+            background-color: white;
+            font-size: 0.8rem;
+            border: none;
+            :hover {
+              color: black;
+            }
+          }
+          button {
+            padding: 20px 160px 20px 20px;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            background-color: white;
+             border: none;
+            
+          }
+        }
+      }
+      :hover ul {
+        opacity: 1;
+        visibility: visible;
+        z-index: 2;
+      }
+    }
     .main-icon {
       border: none;
       background-color: transparent;
-      font-size: 1rem;
-   
+      font-size: 1.4rem;
+
       display: none;
       color: #818181;
       position: relative;
       cursor: pointer;
+      transition: all 0.3s ease-in;
+      :hover {
+        color: var(--primary-color);
+      }
     }
 
     span {
@@ -162,8 +240,7 @@ const Wrapper = styled.header`
         padding-right: 46px;
         display: block;
         position: relative;
-        svg{
-        
+        svg {
         }
       }
       .main-icon--separate::after {

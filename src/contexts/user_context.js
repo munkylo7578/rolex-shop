@@ -6,19 +6,22 @@ import {
   USER_LOGIN,
   USER_LOGOUT,
   USER_REGISTER,
+  GET_ORDER,
+  GET_CURRENT_USER,
 } from "../actions";
 import firebase from "../firebase";
 import swal from "sweetalert";
 const UserContext = React.createContext();
 
 const loginStatus = JSON.parse(localStorage.getItem("loginStatus"));
-const ordersStorage = JSON.parse(localStorage.getItem("orders"));
+/* const ordersStorage = JSON.parse(localStorage.getItem("orders")); */
 const currentUserStorage = localStorage.getItem("currenUser");
 
 const initialState = {
   isLogin: loginStatus,
   currentUser: currentUserStorage,
-  orders: ordersStorage,
+  orders: [],
+  order: {},
 };
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -57,17 +60,26 @@ export const UserProvider = ({ children }) => {
     });
   };
 
-  const login = (user,userList) => {
-    console.log(userList)
-    dispatch({ type: USER_LOGIN, payload: user });
+  const login = (user) => {
+    const orderRef = firebase.database().ref(`Order/${user.user_name}`);
+
+    orderRef.on("value", (snapshot) => {
+      const data = snapshot.val();
+      const orderList = [];
+      for (let id in data) {
+        orderList.push({ id, ...data[id] });
+      }
+
+      dispatch({ type: USER_LOGIN, payload: { user, orderList } });
+    });
   };
   const logout = () => {
     dispatch({ type: USER_LOGOUT });
   };
-  const getOrders = (orderDetail) => {
-    dispatch({ type: GET_ORDERS, payload: orderDetail });
+  const getOrders = () => {};
+  const getOrder = (id) => {
+    dispatch({ type: GET_ORDER, payload: id });
   };
-
   useEffect(() => {
     localStorage.setItem("loginStatus", state.isLogin);
     localStorage.setItem("currenUser", state.currentUser);
@@ -78,7 +90,7 @@ export const UserProvider = ({ children }) => {
   }, [state.orders]);
   return (
     <UserContext.Provider
-      value={{ ...state, registerAccount, login, logout, getOrders }}
+      value={{ ...state, registerAccount, login, logout, getOrders, getOrder }}
     >
       {children}
     </UserContext.Provider>

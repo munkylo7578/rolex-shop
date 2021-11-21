@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,memo } from "react";
 import { LoadableModal } from "../../loadables";
 import styled from "styled-components";
 import Login from "./Login";
@@ -7,7 +7,7 @@ import { useProductsContext } from "../../contexts/products_context";
 const LoginForm = () => {
   const { isFormOpen } = useProductsContext();
   const [activeForm, setActiveForm] = useState(0);
-  console.log("test")
+
   return (
     <Wrapper>
       <LoadableModal />
@@ -116,4 +116,4 @@ const Wrapper = styled.div`
     }
   }
 `;
-export default LoginForm;
+export default memo(LoginForm);

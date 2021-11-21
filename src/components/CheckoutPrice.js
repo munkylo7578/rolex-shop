@@ -13,7 +13,7 @@ const CheckoutPrice = ({ handleSubmit }, formRef) => {
   const { getOrders,currentUser } = useUserContext();
   const history = useHistory();
   const onSubmit = (data) => {
-    const timeOrder = dayjs().locale("vi").format("D MMMM [năm] YYYY");
+    const timeOrder = dayjs().locale("vi").format("HH:mm, D MMMM [năm] YYYY ");
     // Create Order list with path = "/user_phone_number/timeOrder"
     const orderRef = firebase
       .database()
@@ -21,7 +21,8 @@ const CheckoutPrice = ({ handleSubmit }, formRef) => {
       .child(`${currentUser}`);
 
     const orderDetail = {
-      timeOrder:timeOrder,
+      total_price,
+      timeOrder,
       product: cart,
       user: data,
     };
@@ -32,9 +33,9 @@ const CheckoutPrice = ({ handleSubmit }, formRef) => {
       text: "Bạn đã đặt hàng thành công!",
       icon: "success",
       button: "Xem thông tin đơn hàng",
-    }).then(getOrders(orderDetail))
+    })
     .then(clearCart)
-    .then(()=>history.push("/orders"));
+    .then(()=>history.push("/tai-khoan/orders"));
      
   };
   return (

@@ -9,13 +9,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-.swal-modal{
- padding: 100px 0;
- width: 500px;
-}
-.swal-footer{
-  text-align: center;
-}
+
 html {
   letter-spacing: 1px;
   font-family: 'Open Sans', sans-serif;
@@ -147,6 +141,23 @@ ul {
   display: inline;
  
 }
+
+.swal-modal{
+  padding: 150px 0;
+  width: 300px;
+ }
+ .swal-footer{
+   text-align: center;
+ }
+ @media(min-width: 662px){
+  .swal-modal{
+    padding: 100px 0;
+    width: 500px;
+   }
+   .swal-footer{
+     text-align: center;
+   }
+ }
 @keyframes zoomIn {
   from {
     left: 20%;

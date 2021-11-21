@@ -41,7 +41,7 @@ const ProductsList = ({ category,title }) => {
           <LoadableProduct
           title={title}
             fallback={
-              <Skeleton height={250} baseColor="#ccc" borderRadius={10} />
+              <Skeleton height={320} baseColor="#ccc" borderRadius={10} />
             }
             key={product.id}
             product={product}
