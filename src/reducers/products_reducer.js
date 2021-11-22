@@ -28,7 +28,7 @@ const products_reducer = (state, action) => {
       tempProduct = state.products.sort((a, b) => b.name.localeCompare(a.name));
     }
     if (state.sort === "default-value") {
-      tempProduct = state.featuredProducts;
+      tempProduct = state.initialProducts;
     }
    
     if (state.sort === "lowest-price") {
@@ -99,11 +99,14 @@ const products_reducer = (state, action) => {
     };
   }
   if (action.type === GET_PRODUCTS_SUCCESS) {
+    const tempFeaturedProduct = action.payload.slice(0,6)
+    const tempSpecialProduct = action.payload.slice(7,12)
     return {
       ...state,
-   
+      initialProducts:[...action.payload],
       products: [...action.payload],
-      featuredProducts: [...action.payload],
+      featuredProducts: [...tempFeaturedProduct],
+      specialProducts: [...tempSpecialProduct],
       isLoading: false,
     };
   }

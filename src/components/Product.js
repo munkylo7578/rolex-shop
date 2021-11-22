@@ -36,10 +36,10 @@ const Wrapper = styled.article`
   padding-bottom: 10px;
   height: 320px;
   @media (min-width: 772px) {
-    grid-template-rows: 320px;
+    height: 360px;
 
     @media (min-width: 992px) {
-      grid-template-rows: 360px;
+      height: 360px;
     }
   }
   :hover {

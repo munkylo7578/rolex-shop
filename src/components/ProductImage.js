@@ -40,13 +40,15 @@ const Wrapper = styled.article`
   .sub-img__container {
     margin-top: 30px;
     display: flex;
-    flex-wrap: wrap;
+    @media(min-width: 662px){
+      flex-wrap: wrap;
+        }
     img {
       width: 18vw;
       margin-right: 28px;
       opacity: 0.5;
       transition: all 0.2s ease-in;
-      @media(min-width: 650px){
+      @media(min-width: 662px){
       width: 15vw;
         }
         @media (min-width: 992px){

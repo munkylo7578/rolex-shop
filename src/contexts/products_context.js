@@ -29,6 +29,7 @@ const initialState = {
   sort: "default-value",
   initialProducts: [],
   featuredProducts: [],
+  specialProducts: [],
   isFormOpen: false,
 };
 

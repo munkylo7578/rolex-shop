@@ -31,7 +31,7 @@ const SingleProductPage = () => {
         <section>
           <div className="section-center product-info__wrapper">
             <ProductImage mainIndex={mainIndex} setMainIndex={setMainIndex} images={images} />
-            <ProductInfo mainIndex={mainIndex} product={product} title={location.state.from} />
+            <ProductInfo mainIndex={mainIndex} product={product} title={location?.state?.from} />
           </div>
         </section>
       )}
