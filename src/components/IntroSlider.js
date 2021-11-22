@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "slick-carousel/slick/slick.css";
 
 import "slick-carousel/slick/slick-theme.css";
@@ -6,39 +6,64 @@ import styled from "styled-components";
 import Slider from "react-slick";
 import { slider1, slider2, slider3_1, slider3_2, slider3_3 } from "../assets";
 import { Link } from "react-router-dom";
+import "slick-carousel/slick/slick.css";
+
+import "slick-carousel/slick/slick-theme.css";
 const IntroSlider = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  console.log(activeSlide);
   const settings = {
-   
-    infinite: true,
-    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-  
-    draggable: true,
-    slickPrev: true,
-    slickNext: true
+    infinite: true,
+
+    afterChange: (current) => {
+      setActiveSlide(current);
+    },
   };
   return (
     <Wrapper>
       <Slider className="slider" {...settings}>
         <div className="slide slide-1  ">
-          <img src={slider1} alt="slider1" />
-          <div className="slide-content">
-            <blockquote>
-              <h5>BỘ SƯU TẬP ĐỒNG HỒ</h5>
-              <h3>Trường tồn với thời gian</h3>
-              <p>
-                Đồng hồ được chế tác từ các nguyên liệu tốt nhất và lắp ráp tỉ
-                mỉ đến từng chi tiết. Mỗi chi tiết được thiết kế, phát triển, và
-                sản xuất với tiêu chuẩn chính xác nhất.
-              </p>
-            </blockquote>
-            <Link to="/cua-hang">mua ngay</Link>
-          </div>
+          {activeSlide === 0 && (
+            <div className="wrapper">
+              <img src={slider1} alt="slider1" />
+              <div className="slide-content">
+                <blockquote>
+                  <h5>BỘ SƯU TẬP ĐỒNG HỒ</h5>
+                  <h3>Trường tồn với thời gian</h3>
+                  <p>
+                    Đồng hồ được chế tác từ các nguyên liệu tốt nhất và lắp ráp
+                    tỉ mỉ đến từng chi tiết. Mỗi chi tiết được thiết kế, phát
+                    triển, và sản xuất với tiêu chuẩn chính xác nhất.
+                  </p>
+                </blockquote>
+                <Link to="/cua-hang">mua ngay</Link>
+              </div>
+            </div>
+          )}
         </div>
+
         <div className="slide slide-2">
-          <img src={slider2} alt="slider2" />
+          {activeSlide === 1 && (
+            <div className="wrapper">
+              <img src={slider2} alt="slider2" />
+              <div className="slide-content-2">
+                <blockquote>
+                  <h5>DÀNH RIÊNG CHO DOANH NHÂN</h5>
+                  <h3>Đẳng cấp là mãi mãi</h3>
+                  <p>
+                    Bộ sưu tập các mẫu đồng hồ Rolex cổ điển gồm các kiểu dáng
+                    kết hợp những bí quyết của Rolex và những tiêu chuẩn cao
+                    nhất về sự hoàn hảo
+                  </p>
+                </blockquote>
+            
+              </div>
+            </div>
+          )}
         </div>
+
         <div className="slide slide-3">
           <img src={slider3_2} alt="slider3-2" />
         </div>
@@ -47,22 +72,30 @@ const IntroSlider = () => {
   );
 };
 const Wrapper = styled.section`
-  .slider{
+  .slider {
+    cursor: grab;
     overflow: hidden;
+    padding: 0;
+    margin: 0;
   }
   .slide {
-    width: 100%;
+    overflow: hidden;
     height: 500px;
     @media (min-width: 700px) {
-      height: 800px;
-    }
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: 600px;
     }
   }
-
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: zoomIn 8s forwards;
+  }
+  .wrapper {
+    height: 100%;
+    animation: display 0.4s ease-in;
+   
+  }
   .slide-1 {
     position: relative;
     .slide-content {
@@ -70,7 +103,7 @@ const Wrapper = styled.section`
       left: 9%;
       top: 27%;
       width: 72vw;
-      animation: zoomIn;
+      animation: textSlide1;
       animation-duration: 3s;
       transition: cubic-bezier(0.075, 0.82, 0.165, 1);
       @media (min-width: 700px) {
@@ -121,6 +154,66 @@ const Wrapper = styled.section`
           background-color: #685f52;
         }
       }
+      @media (min-width: 800px) {
+        p,
+        h5 {
+          font-size: 18px;
+        }
+        a {
+          font-size: 17px;
+        }
+        h3 {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  .slide-2 {
+    position: relative;
+    .slide-content-2 {
+      position: absolute;
+      left: 30%;
+      top: 60%;
+      width: 72vw;
+      animation: textSlide2 1s ease-in-out;
+      @media (min-width: 700px) {
+        width: 600px;
+      }
+      blockquote::before {
+        position: absolute;
+        left: -6%;
+        top: 0;
+        content: "";
+        width: 2px;
+        background-color: var(--primary-color);
+        height: 100%;
+      }
+      h5,
+      h3,
+      p {
+        color: var(--primary-color);
+        display: block;
+        margin-bottom: 12px;
+        width: 250px;
+        @media (min-width: 662px){
+          width: auto;
+        }
+      }
+      h5 {
+        font-size: 1.8vw;
+        font-weight: 100;
+      }
+      h3 {
+        font-size: 4.2vw;
+      }
+      p {
+        font-size: 1.8vw;
+        font-weight: 200;
+        line-height: 1.6;
+        margin-bottom: 0;
+      }
+     
       @media (min-width: 800px) {
         p,
         h5 {

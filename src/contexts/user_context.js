@@ -14,13 +14,13 @@ import swal from "sweetalert";
 const UserContext = React.createContext();
 
 const loginStatus = JSON.parse(localStorage.getItem("loginStatus"));
-/* const ordersStorage = JSON.parse(localStorage.getItem("orders")); */
+const ordersStorage = JSON.parse(localStorage.getItem("orders"));
 const currentUserStorage = localStorage.getItem("currenUser");
 
 const initialState = {
   isLogin: loginStatus,
   currentUser: currentUserStorage,
-  orders: [],
+  orders: ordersStorage,
   order: {},
 };
 export const UserProvider = ({ children }) => {
@@ -76,7 +76,7 @@ export const UserProvider = ({ children }) => {
   const logout = () => {
     dispatch({ type: USER_LOGOUT });
   };
-  const getOrders = () => {};
+
   const getOrder = (id) => {
     dispatch({ type: GET_ORDER, payload: id });
   };
@@ -90,7 +90,7 @@ export const UserProvider = ({ children }) => {
   }, [state.orders]);
   return (
     <UserContext.Provider
-      value={{ ...state, registerAccount, login, logout, getOrders, getOrder }}
+      value={{ ...state, registerAccount, login, logout, getOrder }}
     >
       {children}
     </UserContext.Provider>

@@ -53,8 +53,8 @@ const Header = () => {
             <div className="price__wrapper">{formatPrice(total_price)}</div>
 
             <Link to="/cart" className="cart-container">
-              <BsBag className="cart-icon" />
-              <span>{total_item}</span>
+              <div className="half-circle"></div>
+              <p>{total_item}</p>
             </Link>
           </div>
         </div>
@@ -110,7 +110,7 @@ const Wrapper = styled.header`
         border-radius: 2px;
         border: 1px solid #ccc;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        
+
         ::after {
           position: absolute;
           content: "";
@@ -149,8 +149,7 @@ const Wrapper = styled.header`
             font-size: 0.9rem;
             color: var(--primary-color);
             background-color: white;
-             border: none;
-            
+            border: none;
           }
         }
       }
@@ -194,21 +193,32 @@ const Wrapper = styled.header`
     }
     .cart-container {
       cursor: pointer;
-      display: flex;
+      display: block;
       align-items: center;
       position: relative;
-      .cart-icon {
-        color: var(--primary-color);
-        font-size: 2.5rem;
-        margin: 0 0 5px 0;
-        display: block;
+      padding: 4px 8px;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      font-size: 0.9rem;
+      :hover {
+        background-color: var(--primary-color);
+        color: white;
       }
-      span {
+      :hover .half-circle{
+        top: -12px;
+        height: 12px;
+      }
+      .half-circle {
+        z-index: -1;
+        width: 60%;
+        height: 8px;
         position: absolute;
-        font-size: 1rem;
-        right: 38%;
-        bottom: 27%;
-        display: block;
+        top: -10px;
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+        border: 2px solid var(--primary-color);
+        border-bottom: 0;
+        right: 19%;
       }
     }
   }

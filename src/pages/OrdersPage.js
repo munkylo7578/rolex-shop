@@ -24,7 +24,7 @@ const OrdersPage = () => {
               <p>{timeOrder}</p>
               <p>Đang xử lí</p>
               <strong>{total_price}</strong>
-              <Link onClick={()=>getOrder(id)} className="primary-btn" to={`/tai-khoan/orders/view-order/${id}`}>Xem</Link>
+              <Link className="primary-btn" to={`/tai-khoan/orders/view-order/${id}`}>Xem</Link>
             </div>
           );
         })}

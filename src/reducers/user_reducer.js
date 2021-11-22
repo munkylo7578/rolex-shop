@@ -14,8 +14,8 @@ import "dayjs/locale/vi";
 const user_reducer = (state, action) => {
   if(action.type === GET_ORDER){
     const tempOrder = state.orders.find(order=>order.id === action.payload)
-  
-    return{...state}
+    
+    return{...state,order:{...tempOrder}}
   }
  
 

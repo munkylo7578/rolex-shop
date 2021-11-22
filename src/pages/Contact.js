@@ -57,6 +57,7 @@ const Contact = ({ title }) => {
 };
 
 const Wrapper = styled.main`
+
 margin-bottom: 56px;
   .section-center {
     display: grid;
@@ -71,6 +72,7 @@ margin-bottom: 56px;
     }
   }
   .contact-content {
+   
     h2 {
       margin-top: 28px;
       text-align: center;
