@@ -99,7 +99,7 @@ const Register = ({ setActiveForm }) => {
           {...register("user_password_repeat", {
             validate: (value) =>
               value === watch("user_password", "") ||
-              "The passwords do not match",
+              "Mật khẩu nhập lại không đúng",
           })}
         />
         {errors.user_password_repeat && (

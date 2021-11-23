@@ -1,29 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "slick-carousel/slick/slick.css";
 
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import Slider from "react-slick";
-import { slider1, slider2, slider3_1, slider3_2, slider3_3 } from "../assets";
+import { slider1, slider2 } from "../assets";
 import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 
 import "slick-carousel/slick/slick-theme.css";
 const IntroSlider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-  console.log(activeSlide);
+  const ref = useRef(null);
+
   const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: true,
-
+    autoplay: true,
+    autoplaySpeed: 7000,
     afterChange: (current) => {
       setActiveSlide(current);
     },
   };
   return (
     <Wrapper>
-      <Slider className="slider" {...settings}>
+      <Slider ref={ref} className="slider" {...settings}>
         <div className="slide slide-1  ">
           {activeSlide === 0 && (
             <div className="wrapper">
@@ -58,14 +60,9 @@ const IntroSlider = () => {
                     nhất về sự hoàn hảo
                   </p>
                 </blockquote>
-            
               </div>
             </div>
           )}
-        </div>
-
-        <div className="slide slide-3">
-          <img src={slider3_2} alt="slider3-2" />
         </div>
       </Slider>
     </Wrapper>
@@ -94,7 +91,6 @@ const Wrapper = styled.section`
   .wrapper {
     height: 100%;
     animation: display 0.4s ease-in;
-   
   }
   .slide-1 {
     position: relative;
@@ -196,7 +192,7 @@ const Wrapper = styled.section`
         display: block;
         margin-bottom: 12px;
         width: 250px;
-        @media (min-width: 662px){
+        @media (min-width: 662px) {
           width: auto;
         }
       }
@@ -213,7 +209,7 @@ const Wrapper = styled.section`
         line-height: 1.6;
         margin-bottom: 0;
       }
-     
+
       @media (min-width: 800px) {
         p,
         h5 {

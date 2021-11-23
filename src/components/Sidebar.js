@@ -206,6 +206,7 @@ const SidebarContainer = styled.div`
       ul {
         height: 0;
         opacity: 0;
+        
         overflow: hidden;
 
         transition: all ease-in 0.3s;
@@ -213,6 +214,7 @@ const SidebarContainer = styled.div`
       .brands-show,.login-show {
         height: 100%;
         opacity: 1;
+        
       }
 
       p {

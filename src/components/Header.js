@@ -39,7 +39,7 @@ const Header = () => {
                       <Link to="/tai-khoan/orders">Đơn hàng</Link>
                     </li>
                     <li>
-                      <Link>Thông tin tài khoản</Link>
+                      <Link to="/tai-khoan/account-info">Thông tin tài khoản</Link>
                     </li>
                     <li>
                       <button onClick={logout}>Đăng xuất</button>
@@ -99,6 +99,7 @@ const Wrapper = styled.header`
     .user-info {
       position: relative;
       z-index: 100;
+      cursor: pointer;
       ul {
         position: absolute;
         top: 170%;
@@ -158,6 +159,9 @@ const Wrapper = styled.header`
         visibility: visible;
         z-index: 2;
       }
+      :hover .main-icon{
+        color: var(--primary-color);
+      }
     }
     .main-icon {
       border: none;
@@ -169,9 +173,7 @@ const Wrapper = styled.header`
       position: relative;
       cursor: pointer;
       transition: all 0.3s ease-in;
-      :hover {
-        color: var(--primary-color);
-      }
+     
     }
 
     span {
