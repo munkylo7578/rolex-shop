@@ -1,13 +1,12 @@
 import React, { useContext, useReducer, useEffect } from "react";
 import reducer from "../reducers/user_reducer";
 import {
-  FORM_OPEN,
-  GET_ORDERS,
+ 
   USER_LOGIN,
   USER_LOGOUT,
-  USER_REGISTER,
+ 
   GET_ORDER,
-  GET_CURRENT_USER,
+ 
 } from "../actions";
 import firebase from "../firebase";
 import swal from "sweetalert";

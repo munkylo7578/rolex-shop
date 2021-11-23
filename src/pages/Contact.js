@@ -6,7 +6,7 @@ import logoMona from "../assets/logo-mona.png";
 
 
 import { MdAttachEmail,MdLocationOn } from "react-icons/md";
-import { BsSkype,BsFillTelephoneFill } from "react-icons/bs";
+import { FaSkype,FaPhone } from "react-icons/fa";
 import { ContactForm } from "../components";
 const Contact = ({ title }) => {
   return (
@@ -27,7 +27,7 @@ const Contact = ({ title }) => {
                 </div>
                 <div>
                   <i>
-                    <BsFillTelephoneFill />
+                    <FaPhone />
                   </i>
                   <p>076 922 0162</p>
                 </div>
@@ -39,7 +39,7 @@ const Contact = ({ title }) => {
                 </div>
                 <div>
                   <i>
-                    <BsSkype />
+                    <FaSkype />
                   </i>
                   <p>demonhunterp</p>
                 </div>

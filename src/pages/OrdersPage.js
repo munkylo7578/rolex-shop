@@ -3,7 +3,7 @@ import { useUserContext } from "../contexts/user_context";
 import styled from "styled-components";
 import { Link,useHistory } from "react-router-dom";
 const OrdersPage = () => {
-  const { orders,getOrder,isLogin } = useUserContext();
+  const { orders,isLogin } = useUserContext();
   const history = useHistory()
   if(!isLogin){
     history.push("/")
@@ -18,7 +18,7 @@ const OrdersPage = () => {
           <h5>Thao tác</h5>
         </div>
         {orders.map((order) => {
-          const { id, timeOrder, product,total_price } = order;
+          const { id, timeOrder, total_price } = order;
           return (
             <div className="order-item">
               <p>{timeOrder}</p>

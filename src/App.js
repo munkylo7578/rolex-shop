@@ -1,13 +1,13 @@
 import React from "react";
-import loadable from "@loadable/component";
+
 import "./App.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Header } from "./components";
 
+import { Footer, MobileCategory, } from "./components";
+import {Home,Contact} from "./pages"
 import {
   LoadableMobileCategory,
-  
   LoadableContact,
   LoadableIntroduction,
   LoadableProductPage,
@@ -19,22 +19,23 @@ import {
   LoadableCheckoutPage,
   LoadableOrdersPage,
   LoadableViewOrder,
-  LoadableAccountPage
+  LoadableAccountPage,
+  LoadableFooter,
+  LoadableErrorPage
 } from "./loadables";
-
 
 function App() {
   return (
     <Router>
       <LoadableLoginForm />
-      <LoadableMobileCategory />
+      <MobileCategory />
       <LoadableHeader />
       <Switch>
-        <Route exact path="/" >
-          <LoadableHome />
+        <Route exact path="/">
+          <Home />
         </Route>
         <Route path="/contact">
-          <LoadableContact title="LIÊN HỆ" />
+          <Contact title="LIÊN HỆ" />
         </Route>
         <Route path="/introduction">
           <LoadableIntroduction title="GIỚI THIỆU" />
@@ -70,18 +71,22 @@ function App() {
           <LoadableCartPage />
         </Route>
         <Route exact path="/checkout">
-            <LoadableCheckoutPage />
+          <LoadableCheckoutPage />
         </Route>
         <Route exact path="/tai-khoan/orders">
-            <LoadableOrdersPage />
+          <LoadableOrdersPage />
         </Route>
         <Route exact path="/tai-khoan/account-info">
-            <LoadableAccountPage/>
+          <LoadableAccountPage />
         </Route>
         <Route path="/tai-khoan/orders/view-order/:id">
-            <LoadableViewOrder />
+          <LoadableViewOrder />
+        </Route>
+        <Route path="*">
+          <LoadableErrorPage />
         </Route>
       </Switch>
+      <Footer />
     </Router>
   );
 }

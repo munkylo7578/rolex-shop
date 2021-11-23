@@ -1,10 +1,17 @@
 import React, { useContext, useReducer,useEffect } from "react";
 import { ADD_TO_CART, REMOVE_CART,CAlCULATE_AMOUNT, TOGGLE_AMOUNT, CLEAR_CART } from "../actions";
 import reducer from "../reducers/cart_reducer";
-const cartStorage = JSON.parse(localStorage.getItem('cart'))
 
+const getCartStorage = ()=>{
+  let cart =localStorage.getItem('cart')
+  if(cart){
+    return JSON.parse(localStorage.getItem('cart'))
+  }else{
+    return []
+  }
+}
 const initialState = {
-  cart: cartStorage,
+  cart: getCartStorage(),
   total_item: 0,
   total_price: 0,
   max: 0
@@ -27,7 +34,7 @@ export const CartProvider = ({ children }) => {
     dispatch({type:CLEAR_CART})
   }
   useEffect(() => {
-    
+    console.log("test")
     dispatch({type:CAlCULATE_AMOUNT})
    
     localStorage.setItem("cart",JSON.stringify(state.cart))

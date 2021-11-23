@@ -4,7 +4,7 @@ import { formatPrice } from "../utils/helper";
 import styled from "styled-components";
 import { useCartContext } from "../contexts/cart_context";
 const Product = ({ product, title }) => {
-  const {id,name,amount,images,price,stock} = product
+  const {id,name,images,price,stock} = product
   const {addToCart} = useCartContext()
   return (
     <Wrapper key={product.id}>

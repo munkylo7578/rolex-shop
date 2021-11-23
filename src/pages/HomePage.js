@@ -1,11 +1,10 @@
 import React from "react";
-
+import { IntroSlider } from "../components";
 import {
   LoadableIntroSlider,
-  LoadableCollection,
-  LoadableFeaturedProduct,
-  LoadableSpecialProduct
+  
 } from "../loadables";
+import { FeaturedProduct,Collection,SpecialProduct } from "../components";
 import styled from "styled-components";
 const HomePage = () => {
   const collectionRef = React.useRef(null);
@@ -16,18 +15,19 @@ const HomePage = () => {
       if (window.pageYOffset > 300) {
         collectionRef?.current?.classList.add("display");
       }
-      if (window.pageYOffset > featuredRef?.current?.clientHeight - 300) {
+      if (window.pageYOffset > 600) {
         featuredRef?.current?.classList.add("display");
       }
+   
     });
     return () => window.removeEventListener("scroll", event);
   }, []);
   return (
     <Wrapper>
-      <LoadableIntroSlider />
-      <LoadableCollection ref={collectionRef} />
-      <LoadableFeaturedProduct ref={featuredRef} />
-      <LoadableSpecialProduct ref={specialRef} />
+      <IntroSlider />
+      <Collection ref={collectionRef} />
+      <FeaturedProduct ref={featuredRef} />
+      <SpecialProduct ref={specialRef} />
     </Wrapper>
   );
 };

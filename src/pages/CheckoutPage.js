@@ -1,26 +1,29 @@
 import React,{useRef} from "react";
 import styled from "styled-components";
-import { useCartContext } from "../contexts/cart_context";
+
 import { useForm } from "react-hook-form";
-import { NoCart, CheckoutInfo, CheckoutPrice } from "../components";
-import { useEffect } from "react/cjs/react.development";
+import {  CheckoutInfo, CheckoutPrice } from "../components";
+
+import { useHistory } from "react-router";
+import { useUserContext } from "../contexts/user_context";
 const CheckoutPage = () => {
-  const { cart } = useCartContext();
+
+  const { isLogin } =useUserContext()
+  const history = useHistory()
   const formRef = useRef()
   const {
     register,
     formState: { errors },
-    reset,
-    formState,
+   
     handleSubmit,
-    watch,
+  
   } = useForm({
     mode: "onChange",
   });
- 
-  if (cart.length === 0) {
-    return <NoCart />;
+  if(!isLogin){
+    history.push("/")
   }
+ 
   return (
     <Wrapper>
       <section className="section-center">

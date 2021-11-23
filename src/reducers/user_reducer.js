@@ -1,15 +1,12 @@
-import React from "react";
+
 import {
-  FORM_OPEN,
-  GET_ORDERS,
+  
   USER_LOGIN,
   USER_LOGOUT,
-  USER_REGISTER,
+ 
   GET_ORDER
 } from "../actions";
-import uniqid from "uniqid";
-import firebase from "../firebase";
-import * as dayjs from "dayjs";
+
 import "dayjs/locale/vi";
 const user_reducer = (state, action) => {
   if(action.type === GET_ORDER){

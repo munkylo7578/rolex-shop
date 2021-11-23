@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 /* ICON IMPORT */
 import { IoClose } from "react-icons/io5";
-import { FaSearch } from "react-icons/fa";
+
 import { MdArrowDropDown } from "react-icons/md";
 /* END ICON IMPORT */
 import { links } from "../utils/constants";

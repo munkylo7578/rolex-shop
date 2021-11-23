@@ -2,8 +2,8 @@ import React from "react";
 
 import styled from "styled-components";
 import logo from "../assets/logo.png";
-import { FaBars, FaUserAlt, FaSearch, FaUserPlus } from "react-icons/fa";
-import { BsBag } from "react-icons/bs";
+import { FaBars, FaUserAlt,FaUserPlus } from "react-icons/fa";
+
 import { useCartContext } from "../contexts/cart_context";
 import { LoadableModal, LoadableSidebar } from "../loadables";
 import Navbar from "./Navbar";
@@ -11,11 +11,19 @@ import { Link } from "react-router-dom";
 import { useProductsContext } from "../contexts/products_context";
 import { formatPrice } from "../utils/helper";
 import { useUserContext } from "../contexts/user_context";
+import swal from "sweetalert";
 const Header = () => {
   const { openSidebar, openForm } = useProductsContext();
   const { total_item, total_price } = useCartContext();
   const { isLogin, logout } = useUserContext();
-
+  const handleLogout = ()=>{
+    swal({
+      title:"Thành công",
+      text: "Đăng xuất thành công",
+      icon: "success",
+  
+    }).then(logout)
+  }
   return (
     <Wrapper>
       <LoadableModal />
@@ -42,7 +50,7 @@ const Header = () => {
                       <Link to="/tai-khoan/account-info">Thông tin tài khoản</Link>
                     </li>
                     <li>
-                      <button onClick={logout}>Đăng xuất</button>
+                      <button onClick={handleLogout}>Đăng xuất</button>
                     </li>
                   </ul>
                 </div>
@@ -145,12 +153,16 @@ const Wrapper = styled.header`
             }
           }
           button {
+            cursor: pointer;
             padding: 20px 160px 20px 20px;
             white-space: nowrap;
             font-size: 0.9rem;
             color: var(--primary-color);
             background-color: white;
             border: none;
+            :hover{
+              color:black;
+            }
           }
         }
       }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Category, ProductsList } from '.'
+import { Category } from '.'
 import {LoadableProductList} from "../loadables"
 import styled from 'styled-components'
 

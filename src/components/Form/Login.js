@@ -8,11 +8,11 @@ import firebase from "../../firebase";
 const Login = () => {
   const { closeModal } = useProductsContext();
 
-  const { users, login } = useUserContext();
+  const {  login } = useUserContext();
   const {
     register,
     handleSubmit,
-    setError,
+   
     formState: { errors },
   } = useForm({
     mode: "onChange",

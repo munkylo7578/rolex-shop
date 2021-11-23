@@ -48,7 +48,7 @@ const SpecialProduct = (props, specialRef) => {
       <Button onClick={previous}>{"<"}</Button>
       <Slider ref={ref} {...settings} className="slider">
         {specialProducts.map((product) => {
-          const { id, name, images, price } = product;
+          const { id,  images } = product;
           return (
             <div key={id} className="slide__wrapper">
               <div className="slide">

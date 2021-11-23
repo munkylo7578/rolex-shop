@@ -10,7 +10,7 @@ import * as dayjs from "dayjs";
 import "dayjs/locale/vi";
 const CheckoutPrice = ({ handleSubmit }, formRef) => {
   const { total_price, cart,clearCart } = useCartContext();
-  const { getOrders,currentUser } = useUserContext();
+  const { currentUser } = useUserContext();
   const history = useHistory();
   const onSubmit = (data) => {
     const timeOrder = dayjs().locale("vi").format("HH:mm, D MMMM [năm] YYYY ");

@@ -5,7 +5,7 @@ import { products_url } from "../utils/constants";
 import { Loading, ProductImage, ProductInfo } from "../components";
 import styled from "styled-components";
 import { memo } from "react/cjs/react.development";
-import { useHistory,useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 const SingleProductPage = () => {
 
     const location = useLocation()

@@ -20,6 +20,10 @@ import NoCart from "./NoCart"
 import CartPrice from "./CartPrice"
 import CheckoutInfo from "./CheckoutInfo";
 import CheckoutPrice from "./CheckoutPrice";
+import Collection from "./Collection";
+import FeaturedProduct from "./FeaturedProduct";
+import SpecialProduct from "./SpecialProduct";
+
 export {
   Header,
   Hero,
@@ -42,5 +46,9 @@ export {
   NoCart,
   CartPrice,
   CheckoutInfo,
-  CheckoutPrice
+  CheckoutPrice,
+  Collection,
+  FeaturedProduct,
+  SpecialProduct,
+
 };

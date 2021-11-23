@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 import { useCartContext } from "../contexts/cart_context";
 import styled from "styled-components";
-import { formatPrice } from "../utils/helper";
+
 import { CartHeading, CartItem, NoCart, CartPrice } from "../components";
 const CartPage = () => {
   const { cart} = useCartContext();

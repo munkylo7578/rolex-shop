@@ -7,6 +7,7 @@ const ViewOrder = () => {
   const { order, getOrder } = useUserContext();
   useEffect(() => {
     getOrder(id);
+    //eslint-disable-next-line
   }, [id]);
   return (
     <>

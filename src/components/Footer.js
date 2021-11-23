@@ -1,88 +1,33 @@
 import React from "react";
 import styled from "styled-components";
-import footer from "../assets/footer.jpg";
-import { FaPaperPlane } from "react-icons/fa";
-import logo from "../assets/logo-black.PNG";
 
-import { MdAttachEmail,MdLocationOn } from "react-icons/md";
-import { BsSkype,BsFillTelephoneFill } from "react-icons/bs";
 const Footer = () => {
   return (
     <Wrapper>
-      <img className="footer-background" src={footer} alt="" />
-
-      <div className=" footer-content_wrapper">
-        <div className="footer_content">
-          <img src={logo} alt="" />
-          <article className="footer-contact">
-            <div>
-              <i>
-                <MdLocationOn />
-              </i>
-              <p>319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM</p>
-            </div>
-
-            <div>
-              <i>
-                <BsFillTelephoneFill />
-              </i>
-              <p>076 922 0162</p>
-            </div>
-            <div>
-              <i>
-                <MdAttachEmail />
-              </i>
-              <p>demonhunterg@gmail.com</p>
-            </div>
-            <div>
-              <i>
-                <BsSkype />
-              </i>
-              <p>demonhunterp</p>
-            </div>
-          </article>
-          <article className="footer-social"></article>
-          <article className="footer-form">
-            <h2>ĐĂNG KÍ</h2>
-            <p>Đăng ký để nhận được thông tin mới nhất từ chúng tôi</p>
-            <form action="">
-              <input type="email" />
-              <button>
-                <FaPaperPlane />
-              </button>
-            </form>
-          </article>
-        </div>
-      </div>
+      <h5>
+        &copy; {new Date().getFullYear()}
+        <span>rolex shop</span>
+      </h5>
+      <h5>All rights reserved</h5>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.footer`
-  position: relative;
-  height: 800px;
-  width: 100vw;
-  .footer-background {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background-color: transparent;
+  height: 4rem;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 48px;
+  letter-spacing: 3px;
+  span {
+    color: white;
   }
-
-  .footer-content_wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-       display: flex;
-        flex-direction: row;
-    .footer-content {
-   
-      img {
-        width: 300px;
-        height: 300px;
-      }
-    }
+  h5 {
+    color: white;
   }
 `;
 export default Footer;
