@@ -1,5 +1,5 @@
 import React, { useState,memo } from "react";
-import { LoadableModal } from "../../loadables";
+import {Modal} from "../index"
 import styled from "styled-components";
 import Login from "./Login";
 import Register from "./Register";
@@ -10,7 +10,7 @@ const LoginForm = () => {
 
   return (
     <Wrapper>
-      <LoadableModal />
+      <Modal />
       <div className={isFormOpen ? "form__wrapper show-form" : "form__wrapper"}>
         <div className="main-form">
           <div className="change-form__wrapper">

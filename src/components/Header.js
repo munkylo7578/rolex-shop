@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 import { FaBars, FaUserAlt,FaUserPlus } from "react-icons/fa";
 
 import { useCartContext } from "../contexts/cart_context";
-import { LoadableModal, LoadableSidebar } from "../loadables";
+import {LoadableModal,LoadableSidebar} from "../loadables"
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../contexts/products_context";

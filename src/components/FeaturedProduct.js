@@ -4,13 +4,13 @@ import { useProductsContext } from "../contexts/products_context";
 import { LoadableProduct } from "../loadables";
 import { Loading } from ".";
 import Skeleton from "react-loading-skeleton";
-const FeaturedProduct = (props, featuredRef) => {
+const FeaturedProduct = (props) => {
   const { featuredProducts, isLoading } = useProductsContext();
   if (isLoading) {
     <Loading />;
   }
   return (
-    <Wrapper ref={featuredRef} className="section-center">
+    <Wrapper className="section-center">
       <h1>
         <span>FEATURED</span> PRODUCTS
       </h1>
@@ -32,8 +32,7 @@ const FeaturedProduct = (props, featuredRef) => {
   );
 };
 const Wrapper = styled.section`
-  opacity: 0;
-  visibility: hidden;
+  
   margin-top: 60px;
 
   .featured-product {

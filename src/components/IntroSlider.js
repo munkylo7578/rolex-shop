@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import "slick-carousel/slick/slick.css";
 
 import "slick-carousel/slick/slick-theme.css";
@@ -10,59 +10,49 @@ import "slick-carousel/slick/slick.css";
 
 import "slick-carousel/slick/slick-theme.css";
 const IntroSlider = () => {
-  const [activeSlide, setActiveSlide] = useState(0);
   const ref = useRef(null);
 
   const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 7000,
-    afterChange: (current) => {
-      setActiveSlide(current);
-    },
+    infinite: false,
   };
   return (
     <Wrapper>
       <Slider ref={ref} className="slider" {...settings}>
         <div className="slide slide-1  ">
-          {activeSlide === 0 && (
-            <div className="wrapper">
-              <img src={slider1} alt="slider1" />
-              <div className="slide-content">
-                <blockquote>
-                  <h5>BỘ SƯU TẬP ĐỒNG HỒ</h5>
-                  <h3>Trường tồn với thời gian</h3>
-                  <p>
-                    Đồng hồ được chế tác từ các nguyên liệu tốt nhất và lắp ráp
-                    tỉ mỉ đến từng chi tiết. Mỗi chi tiết được thiết kế, phát
-                    triển, và sản xuất với tiêu chuẩn chính xác nhất.
-                  </p>
-                </blockquote>
-                <Link to="/cua-hang">mua ngay</Link>
-              </div>
+          <div className="wrapper">
+            <img src={slider1} alt="slider1" />
+            <div className="slide-content">
+              <blockquote>
+                <h5>BỘ SƯU TẬP ĐỒNG HỒ</h5>
+                <h3>Trường tồn với thời gian</h3>
+                <p>
+                  Đồng hồ được chế tác từ các nguyên liệu tốt nhất và lắp ráp tỉ
+                  mỉ đến từng chi tiết. Mỗi chi tiết được thiết kế, phát triển,
+                  và sản xuất với tiêu chuẩn chính xác nhất.
+                </p>
+              </blockquote>
+              <Link to="/cua-hang">mua ngay</Link>
             </div>
-          )}
+          </div>
         </div>
 
         <div className="slide slide-2">
-          {activeSlide === 1 && (
-            <div className="wrapper">
-              <img src={slider2} alt="slider2" />
-              <div className="slide-content-2">
-                <blockquote>
-                  <h5>DÀNH RIÊNG CHO DOANH NHÂN</h5>
-                  <h3>Đẳng cấp là mãi mãi</h3>
-                  <p>
-                    Bộ sưu tập các mẫu đồng hồ Rolex cổ điển gồm các kiểu dáng
-                    kết hợp những bí quyết của Rolex và những tiêu chuẩn cao
-                    nhất về sự hoàn hảo
-                  </p>
-                </blockquote>
-              </div>
+          <div className="wrapper">
+            <img src={slider2} alt="slider2" />
+            <div className="slide-content-2">
+              <blockquote>
+                <h5>DÀNH RIÊNG CHO DOANH NHÂN</h5>
+                <h3>Đẳng cấp là mãi mãi</h3>
+                <p>
+                  Bộ sưu tập các mẫu đồng hồ Rolex cổ điển gồm các kiểu dáng kết
+                  hợp những bí quyết của Rolex và những tiêu chuẩn cao nhất về
+                  sự hoàn hảo
+                </p>
+              </blockquote>
             </div>
-          )}
+          </div>
         </div>
       </Slider>
     </Wrapper>
@@ -86,7 +76,6 @@ const Wrapper = styled.section`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    
   }
   .wrapper {
     height: 100%;
@@ -99,9 +88,8 @@ const Wrapper = styled.section`
       left: 9%;
       top: 27%;
       width: 72vw;
-      animation: textSlide1;
-      animation-duration: 3s;
-      transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+      animation: textSlide1 2s ease-in-out;
+
       @media (min-width: 700px) {
         width: 600px;
       }
@@ -172,7 +160,7 @@ const Wrapper = styled.section`
       left: 30%;
       top: 60%;
       width: 72vw;
-      animation: textSlide2 1s ease-in-out;
+      animation: textSlide2 2s ease-in-out;
       @media (min-width: 700px) {
         width: 600px;
       }

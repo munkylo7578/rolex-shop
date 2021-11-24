@@ -9,7 +9,7 @@ import {
  
 } from "../actions";
 import firebase from "../firebase";
-import swal from "sweetalert";
+
 const UserContext = React.createContext();
 
 const loginStatus = JSON.parse(localStorage.getItem("loginStatus"));
@@ -24,40 +24,7 @@ const initialState = {
 };
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const registerAccount = (data, reset, setActiveForm) => {
-    const userRef = firebase.database().ref("Users");
-
-    userRef.on("value", (snapshot) => {
-      const users = snapshot.val();
-      const userList = [];
-      for (let id in users) {
-        userList.push(users[id]);
-      }
-
-      const tempUser = userList.find(
-        (user) =>
-          user.user_email === data.user_email &&
-          user.user_name === data.user_name
-      );
-      if (tempUser) {
-        swal({
-          title: "Thất bại!",
-          text: "Email hoặc tên đăng nhập đã được sử dụng !",
-          icon: "error",
-          button: "ĐĂNG KÍ LẠI",
-        });
-      } else {
-        userRef.push(data);
-        swal({
-          title: "Chúc mừng!",
-          text: "Bạn đã đăng kí tài khoản thành công!",
-          icon: "success",
-          button: "ĐĂNG NHẬP",
-        }).then(() => setActiveForm(0));
-        reset();
-      }
-    });
-  };
+  
 
   const login = (user) => {
     const orderRef = firebase.database().ref(`Order/${user.user_name}`);
@@ -89,7 +56,7 @@ export const UserProvider = ({ children }) => {
   }, [state.orders]);
   return (
     <UserContext.Provider
-      value={{ ...state, registerAccount, login, logout, getOrder }}
+      value={{ ...state, login, logout, getOrder }}
     >
       {children}
     </UserContext.Provider>

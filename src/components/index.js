@@ -23,7 +23,7 @@ import CheckoutPrice from "./CheckoutPrice";
 import Collection from "./Collection";
 import FeaturedProduct from "./FeaturedProduct";
 import SpecialProduct from "./SpecialProduct";
-
+import LoginForm from "./Form/LoginForm";
 export {
   Header,
   Hero,
@@ -50,5 +50,5 @@ export {
   Collection,
   FeaturedProduct,
   SpecialProduct,
-
+  LoginForm
 };

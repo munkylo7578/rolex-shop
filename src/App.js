@@ -4,8 +4,7 @@ import "./App.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Footer, MobileCategory, } from "./components";
-import {Home,Contact} from "./pages"
+
 import {
   LoadableMobileCategory,
   LoadableContact,
@@ -28,14 +27,14 @@ function App() {
   return (
     <Router>
       <LoadableLoginForm />
-      <MobileCategory />
+      <LoadableMobileCategory />
       <LoadableHeader />
       <Switch>
         <Route exact path="/">
-          <Home />
+          <LoadableHome />
         </Route>
         <Route path="/contact">
-          <Contact title="LIÊN HỆ" />
+          <LoadableContact title="LIÊN HỆ" />
         </Route>
         <Route path="/introduction">
           <LoadableIntroduction title="GIỚI THIỆU" />
@@ -86,7 +85,7 @@ function App() {
           <LoadableErrorPage />
         </Route>
       </Switch>
-      <Footer />
+      <LoadableFooter />
     </Router>
   );
 }

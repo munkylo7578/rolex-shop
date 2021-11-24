@@ -2,9 +2,9 @@ import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { banner_1, banner_2, banner_3, banner_4 } from "../assets";
-const Collection = (props, collectionRef) => {
+const Collection = () => {
   return (
-    <Wrapper ref={collectionRef}>
+    <Wrapper >
       <article>
         <img src={banner_4} alt="banner4" />
         <div className="banner-content">
@@ -36,8 +36,7 @@ const Collection = (props, collectionRef) => {
   );
 };
 const Wrapper = styled.section`
-  opacity: 0;
-  visibility: hidden;
+ 
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 350px 250px 250px 350px;

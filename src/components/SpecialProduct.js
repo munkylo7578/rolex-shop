@@ -8,7 +8,7 @@ import { useProductsContext } from "../contexts/products_context";
 import { Loading } from ".";
 import { ProductInfo } from ".";
 import { Button } from "./SliderButton";
-const SpecialProduct = (props, specialRef) => {
+const SpecialProduct = () => {
   const { specialProducts, isLoading } = useProductsContext();
   const ref = useRef(null);
   const next = () => {
@@ -38,7 +38,7 @@ const SpecialProduct = (props, specialRef) => {
     return <Loading />;
   }
   return (
-    <Wrapper ref={specialRef} className="section-center">
+    <Wrapper  className="section-center">
       <h1>
         <span>SPECIAL</span> EDITION
       </h1>
