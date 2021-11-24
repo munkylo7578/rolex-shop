@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { banner_1, banner_2, banner_3, banner_4 } from "../assets";
+import  IMAGES from "../assets";
 const Collection = () => {
   return (
     <Wrapper >
       <article>
-        <img src={banner_4} alt="banner4" />
+        <img src={IMAGES.banner_4} alt="banner4" />
         <div className="banner-content">
           <h3>ĐỒNG HỒ CỔ ĐIỂN</h3>
           <p>Phong cách trường tồn, có thể được nhận biết trong nháy mắt.</p>
@@ -14,7 +14,7 @@ const Collection = () => {
         </div>
       </article>
       <article>
-        <img src={banner_3} alt="banner3" />
+        <img src={IMAGES.banner_3} alt="banner3" />
         <div className="banner-content-2">
           <h3>BỘ SƯU TẬP NĂM 2021</h3>
 
@@ -22,10 +22,10 @@ const Collection = () => {
         </div>
       </article>
       <article>
-        <img src={banner_2} alt="banner2" />
+        <img src={IMAGES.banner_2} alt="banner2" />
       </article>
       <article>
-        <img src={banner_1} alt="banner1" />
+        <img src={IMAGES.banner_1} alt="banner1" />
         <div className="banner-content">
           <h3>ĐỒNG HỒ CHẤT</h3>
           <p>Kết hợp hoàn hảo tính năng ưu việt và phong cách đẳng cấp.</p>

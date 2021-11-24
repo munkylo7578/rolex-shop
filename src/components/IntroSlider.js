@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import Slider from "react-slick";
-import { slider1, slider2 } from "../assets";
+import IMAGES from "../assets";
 import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 
@@ -22,7 +22,7 @@ const IntroSlider = () => {
       <Slider ref={ref} className="slider" {...settings}>
         <div className="slide slide-1  ">
           <div className="wrapper">
-            <img src={slider1} alt="slider1" />
+            <img src={IMAGES.slider1} alt="slider1" />
             <div className="slide-content">
               <blockquote>
                 <h5>BỘ SƯU TẬP ĐỒNG HỒ</h5>
@@ -40,7 +40,7 @@ const IntroSlider = () => {
 
         <div className="slide slide-2">
           <div className="wrapper">
-            <img src={slider2} alt="slider2" />
+            <img src={IMAGES.slider2} alt="slider2" />
             <div className="slide-content-2">
               <blockquote>
                 <h5>DÀNH RIÊNG CHO DOANH NHÂN</h5>

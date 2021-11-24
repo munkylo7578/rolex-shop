@@ -1,6 +1,6 @@
 import React,{memo} from "react";
 import styled from "styled-components";
-import { heroImage1,heroImage2 } from "../assets"; 
+import IMAGES from "../assets"; 
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useProductsContext } from "../contexts/products_context";
@@ -11,7 +11,7 @@ const Hero = ({ title }) => {
   if (title === "LIÊN HỆ" || title === "GIỚI THIỆU") {
     return (
       <Wrapper>
-        <img src={title === "GIỚI THIỆU" ? heroImage1 : heroImage2} alt="" />
+        <img src={title === "GIỚI THIỆU" ? IMAGES.heroImage1 : IMAGES.heroImage2} alt="" />
         <div className="hero-content__wrapper">
           <h2>{title}</h2>
           <div>
