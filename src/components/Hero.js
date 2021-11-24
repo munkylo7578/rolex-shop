@@ -1,11 +1,10 @@
-import React from "react";
+import React,{memo} from "react";
 import styled from "styled-components";
-import heroImage1 from "../assets/blog5.jpg";
-import heroImage2 from "../assets/blog10_518c7ab0-ce3f-4092-a34a-be939cb0b851.jpg";
+import { heroImage1,heroImage2 } from "../assets"; 
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useProductsContext } from "../contexts/products_context";
-import { memo } from "react/cjs/react.development";
+
 const Hero = ({ title }) => {
   const { openCategory, updateSort, sort } = useProductsContext();
   
