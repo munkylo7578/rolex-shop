@@ -1,10 +1,10 @@
-import React, { forwardRef } from "react";
+import React, { Suspense } from "react";
 import styled from "styled-components";
 import { useProductsContext } from "../contexts/products_context";
 import { LoadableProduct } from "../loadables";
 import { Loading } from ".";
 import Skeleton from "react-loading-skeleton";
-const FeaturedProduct = (props) => {
+const FeaturedProduct = () => {
   const { featuredProducts, isLoading } = useProductsContext();
   if (isLoading) {
     <Loading />;
@@ -17,14 +17,19 @@ const FeaturedProduct = (props) => {
       <div className="featured-product">
         {featuredProducts.map((product) => {
           return (
-            <LoadableProduct
-              key={product.id}
+            <Suspense
               fallback={
                 <Skeleton height={360} baseColor="#ccc" borderRadius={10} />
+                
               }
-              product={product}
-              title="Featured"
-            />
+              key={product.id}
+            >
+              <LoadableProduct
+              
+                product={product}
+                title="Featured"
+              />
+            </Suspense>
           );
         })}
       </div>
@@ -32,7 +37,6 @@ const FeaturedProduct = (props) => {
   );
 };
 const Wrapper = styled.section`
-  
   margin-top: 60px;
 
   .featured-product {
@@ -46,4 +50,4 @@ const Wrapper = styled.section`
     }
   }
 `;
-export default forwardRef(FeaturedProduct);
+export default FeaturedProduct;

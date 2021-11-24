@@ -27,7 +27,7 @@ export const links = [
   {
     id: 6,
     text: "Brands",
-    url: "/oops",
+
     types: [
       {
         name: "CITIZEN",
@@ -56,8 +56,6 @@ export const links = [
   {
     id: 9,
     text: "đăng nhập",
-    url: "/oops",
-   
   },
 ];
 export const routes = [

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { MdArrowDropDown } from "react-icons/md";
 import { links } from "../utils/constants";
-import { Link, NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   

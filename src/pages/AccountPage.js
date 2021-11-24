@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { useUserContext } from "../contexts/user_context";
 import { useForm } from "react-hook-form";
 import firebase from "../firebase";
+import {useHistory} from  "react-router-dom"
 import swal from "sweetalert";
 const AccountPage = () => {
-  const { currentUser } = useUserContext();
+  const { currentUser,isLogin } = useUserContext();
+  const history = useHistory()
   const {
     register,
     formState: { errors },
@@ -69,7 +71,9 @@ const AccountPage = () => {
     });
     reset()
   };
-  
+  if(!isLogin){
+    history.push("/")
+  }
   return (
     <Wrapper>
       <section className="section-center">

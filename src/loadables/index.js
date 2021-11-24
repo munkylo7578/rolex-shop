@@ -1,31 +1,30 @@
-import loadable from '@loadable/component'
-import pMinDelay from 'p-min-delay'
+import pMinDelay from "p-min-delay";
+import { lazy } from "react";
 
+export const LoadableHome = lazy(() => import("../pages/HomePage"));
 
-export const LoadableHeader = loadable(() => import("../components/Header"));
-export const LoadableNavbar = loadable(() => import("../components/Navbar"));
-export const LoadableFooter = loadable(() => import("../components/Footer"));
-export const LoadableHome = loadable(() => import("../pages/HomePage"));
-export const LoadableMobileCategory = loadable(()=>import("../components/MobileCategory"))
-export const LoadableSidebar = loadable(()=>import("../components/Sidebar"))
-export const LoadableModal = loadable(()=>import("../components/Modal"))
-export const LoadableCollection = loadable(()=>import("../components/Collection"))
-export const LoadableLoginForm = loadable(()=>import("../components/Form/LoginForm"))
-export const LoadableFeaturedProduct = loadable(()=>import("../components/FeaturedProduct"))
-export const LoadableSpecialProduct = loadable(()=>import("../components/SpecialProduct"))
-export const LoadableContact = loadable(()=>import("../pages/Contact"))
-export const LoadableIntroduction = loadable(()=>import("../pages/Introduction"))
-export const LoadableErrorPage = loadable(()=>import("../pages/ErrorPage"))
-export const LoadableProductPage = loadable(()=>import("../pages/ProductPage"))
-export const LoadableSingleProductPage = loadable(()=>import("../pages/SingleProductPage"))
-export const LoadableCartPage = loadable(()=>import("../pages/CartPage"))
-export const LoadableCheckoutPage = loadable(()=>import("../pages/CheckoutPage"))
-export const LoadableAccountPage = loadable(()=>import("../pages/AccountPage"))
-export const LoadableViewOrder = loadable(()=>import("../pages/ViewOrder"))
-export const LoadableOrdersPage = loadable(()=>import("../pages/OrdersPage"))
-export const LoadableIntroSlider = loadable(()=>(import("../components/IntroSlider")))
-export const LoadableProductList = loadable(()=>pMinDelay(import("../components/ProductsList"),0))
-export const LoadableProduct = loadable(()=>pMinDelay(import("../components/Product"),2000))
+export const LoadableFeaturedProduct = lazy(() =>
+  import("../components/FeaturedProduct")
+);
+export const LoadableSpecialProduct = lazy(() =>
+  import("../components/SpecialProduct")
+);
+export const LoadableContact = lazy(() => import("../pages/Contact"));
+export const LoadableIntroduction = lazy(() => import("../pages/Introduction"));
+export const LoadableErrorPage = lazy(() => import("../pages/ErrorPage"));
+export const LoadableProductPage = lazy(() => import("../pages/ProductPage"));
+export const LoadableSingleProductPage = lazy(() =>
+  import("../pages/SingleProductPage")
+);
+export const LoadableCartPage = lazy(() => import("../pages/CartPage"));
+export const LoadableCheckoutPage = lazy(() => import("../pages/CheckoutPage"));
+export const LoadableAccountPage = lazy(() => import("../pages/AccountPage"));
+export const LoadableViewOrder = lazy(() => import("../pages/ViewOrder"));
+export const LoadableOrdersPage = lazy(() => import("../pages/OrdersPage"));
 
-
-
+export const LoadableProductList = lazy(() =>
+  pMinDelay(import("../components/ProductsList"), 0)
+);
+export const LoadableProduct = lazy(() =>
+  pMinDelay(import("../components/Product"), 2000)
+);

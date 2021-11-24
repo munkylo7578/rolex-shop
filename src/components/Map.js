@@ -1,10 +1,10 @@
-import * as React from "react";
+import React,{memo} from "react";
 import { useState, useCallback } from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import styled from "styled-components";
 import { MdLocationOn } from "react-icons/md";
-import { memo } from "react/cjs/react.development";
+
 function Map() {
 
   const [viewport, setViewport] = useState({

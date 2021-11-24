@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef } from "react";
+import React, { useRef } from "react";
 import "slick-carousel/slick/slick.css";
 
 import "slick-carousel/slick/slick-theme.css";
@@ -120,4 +120,4 @@ const Wrapper = styled.section`
     }
   }
 `;
-export default forwardRef(SpecialProduct);
+export default SpecialProduct;

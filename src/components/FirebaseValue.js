@@ -1,6 +1,6 @@
 import firebase from "../firebase";
 import swal from "sweetalert";
-import React from "react";
+
 const userRef = firebase.database().ref("Users");
 
 export const registerAccount = (data, reset, setActiveForm) => {

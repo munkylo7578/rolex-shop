@@ -23,7 +23,7 @@ const Sidebar = () => {
       <aside className={isSidebarOpen ? "show-sidebar" : ""}>
         <ul className="sidebar-list">
           {links.map((link) => {
-            const { text, id, url, types } = link;
+            const { text, id, types } = link;
             if (text === "Brands") {
               return (
                 <li key={id} className="brands-category link">
@@ -84,7 +84,7 @@ const Sidebar = () => {
             }
             return (
               <li key={id}>
-                <Link onClick={closeSidebar} className="link" to={url}>
+                <Link onClick={closeSidebar} className="link" to={link.url}>
                   {text}
                 </Link>
               </li>

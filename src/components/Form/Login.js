@@ -1,10 +1,10 @@
 import React, { memo } from "react";
 import styled from "styled-components";
-import swal from "sweetalert";
+
 import { useProductsContext } from "../../contexts/products_context";
 import { useUserContext } from "../../contexts/user_context";
 import { useForm } from "react-hook-form";
-import firebase from "../../firebase";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaLogin } from "./schema";
 import { NameInput,PasswordInput} from "./Input";

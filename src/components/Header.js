@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 import { FaBars, FaUserAlt,FaUserPlus } from "react-icons/fa";
 
 import { useCartContext } from "../contexts/cart_context";
-import {LoadableModal,LoadableSidebar} from "../loadables"
+import {Modal,Sidebar} from "../components"
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../contexts/products_context";
@@ -26,8 +26,8 @@ const Header = () => {
   }
   return (
     <Wrapper>
-      <LoadableModal />
-      <LoadableSidebar />
+      <Modal />
+      <Sidebar />
       <nav className="sub-nav">
         <div className="section-center">
           <button onClick={openSidebar} className="menu-btn">
@@ -108,6 +108,7 @@ const Wrapper = styled.header`
       position: relative;
       z-index: 100;
       cursor: pointer;
+      
       ul {
         position: absolute;
         top: 170%;
@@ -170,6 +171,9 @@ const Wrapper = styled.header`
         opacity: 1;
         visibility: visible;
         z-index: 2;
+      }
+      :hover svg{
+        color: var(--primary-color);
       }
       :hover .main-icon{
         color: var(--primary-color);

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import styled from "styled-components";
 import { useProductsContext } from "../contexts/products_context";
 import { useFilteredContext } from "../contexts/filtered_context";
@@ -11,7 +11,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { GrFormPrevious } from "react-icons/gr";
 import { GrFormNext } from "react-icons/gr";
 
-const ProductsList = ({ category,title }) => {
+const ProductsList = ({ category, title }) => {
   const { products, isLoading, sort, sortProduct } = useProductsContext();
 
   const {
@@ -38,14 +38,13 @@ const ProductsList = ({ category,title }) => {
     <Wrapper>
       {filteredProducts?.map((product) => {
         return (
-          <LoadableProduct
-          title={title}
+          <Suspense
             fallback={
               <Skeleton height={320} baseColor="#ccc" borderRadius={10} />
             }
-            key={product.id}
-            product={product}
-          />
+          >
+            <LoadableProduct title={title} key={product.id} product={product} />
+          </Suspense>
         );
       })}
       {paginatedArray.length > 1 && (

@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { banner_1, banner_2, banner_3, banner_4 } from "../assets";
@@ -160,4 +160,4 @@ const Wrapper = styled.section`
     }
   }
 `;
-export default forwardRef(Collection);
+export default Collection;
