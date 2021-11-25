@@ -6,6 +6,8 @@ import {  CheckoutInfo, CheckoutPrice } from "../components";
 
 import { useHistory } from "react-router";
 import { useUserContext } from "../contexts/user_context";
+import { schemaCheckout } from "../components/Form/schema";
+import { yupResolver } from "@hookform/resolvers/yup";
 const CheckoutPage = () => {
 
   const { isLogin } =useUserContext()
@@ -19,6 +21,7 @@ const CheckoutPage = () => {
   
   } = useForm({
     mode: "onChange",
+    resolver: yupResolver(schemaCheckout)
   });
   if(!isLogin){
     history.push("/")

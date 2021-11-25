@@ -4,6 +4,8 @@ import emailjs from "emailjs-com";
 import { init } from "emailjs-com";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
+import { schemaContact } from "./schema";
+import { yupResolver } from "@hookform/resolvers/yup";
 const ContactForm = () => {
   const {
     register,
@@ -13,6 +15,7 @@ const ContactForm = () => {
     handleSubmit,
   } = useForm({
     mode: "onChange",
+    resolver: yupResolver(schemaContact),
   });
   const form = useRef();
   const onSubmit = () => {
@@ -30,7 +33,7 @@ const ContactForm = () => {
         console.log(error.text);
       }
     );
-    reset()
+    reset();
   };
   return (
     <Wrapper className="contact-form">
@@ -38,25 +41,13 @@ const ContactForm = () => {
         <div className="form-control">
           <input
             type="text"
-            name="user_name"
+            name="user_full_name"
             placeholder="Họ và tên"
-            {...register("user_name", {
-              required: "Hãy nhập vào đây",
-              minLength: {
-                value: 10,
-                message: "tên phải dài tối thiểu 10 kí tự",
-              },
-              maxLength: {
-                value: 30,
-                message: "Tên tối đa dài 20 kí tự",
-              },
-              pattern: {
-                value: /^(?![\s.]+$)[a-zA-Z\s.]*$/,
-                message: "Nhập tên không hợp lệ",
-              },
-            })}
+            {...register("user_full_name")}
           />
-          {errors.user_name && <p className="error-message">{errors.user_name.message}</p>}
+          {errors.user_full_name && (
+            <p className="error-message">{errors.user_full_name.message}</p>
+          )}
         </div>
 
         <div className="form-control">
@@ -65,29 +56,18 @@ const ContactForm = () => {
             type="email"
             name="user_email"
             placeholder="Email"
-            {...register("user_email", {
-              required: "Hãy nhập vào đây",
-              pattern: {
-                value:
-                  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: "Email không hợp lệ",
-              },
-            })}
+            {...register("user_email")}
           />
-          {errors.user_email && <p className="error-message">{errors.user_email.message}</p>}
+          {errors.user_email && (
+            <p className="error-message">{errors.user_email.message}</p>
+          )}
         </div>
         <div className="form-control">
           <input
             type="text"
             name="user_phone_number"
-            placeholder="Số điện thoại"
-            {...register("user_phone_number", {
-              required: "Hãy nhập vào đây",
-              pattern: {
-                value: /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/,
-                message: "Hãy nhập dúng định dạng số điện thoại ",
-              },
-            })}
+            placeholder="Số điện thoại Việt Nam vd:0346556039"
+            {...register("user_phone_number")}
           />
           {errors.user_phone_number && (
             <p className="error-message">{errors.user_phone_number.message}</p>
@@ -102,21 +82,16 @@ const ContactForm = () => {
           <textarea
             name="user_message"
             placeholder="Lời nhắn"
-            {...register("user_message", {
-              required: "Hãy nhập vào đây",
-              pattern: {
-                value: /^(?![\s.]+$)[a-zA-Z\s.]*$/,
-                message: "Nội dung không hợp lệ",
-              },
-            })}
+            {...register("user_message")}
           />
-          {errors.user_message && <p className="error-message">{errors.user_message.message}</p>}
+          {errors.user_message && (
+            <p className="error-message">{errors.user_message.message}</p>
+          )}
         </div>
 
         <button disabled={!formState.isValid} type="submit">
           GỬI
         </button>
-      
       </form>
     </Wrapper>
   );
@@ -137,7 +112,6 @@ const Wrapper = styled.article`
     .form-control {
       width: 100%;
       height: 100%;
-     
     }
     .form-control:nth-child(5) {
       grid-column: 1 / span 2;
@@ -150,18 +124,17 @@ const Wrapper = styled.article`
     }
     button {
       grid-column: 1/3;
-      background-color:  #cdb07c;
+      background-color: #cdb07c;
       color: white;
 
       border: none;
       cursor: pointer;
     }
 
-    button:disabled{
+    button:disabled {
       background-color: var(--primary-color);
       cursor: default;
     }
-   
 
     textarea {
       padding-left: 10px;

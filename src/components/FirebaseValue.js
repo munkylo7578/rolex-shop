@@ -10,7 +10,7 @@ export const registerAccount = (data, reset, setActiveForm) => {
     for (let id in users) {
       userList.push({ id, ...users[id] });
     }
-    
+
     const tempUser = userList.find(
       (user) =>
         user.user_email === data.user_email && user.user_name === data.user_name
@@ -35,8 +35,8 @@ export const registerAccount = (data, reset, setActiveForm) => {
   });
 };
 
-export const handleLogin = (data,closeModal,login) => {
-  console.log("testlogin")
+export const handleLogin = (data, closeModal, login) => {
+  console.log("testlogin");
   userRef.on("value", (snapshot) => {
     const users = snapshot.val();
     const userList = [];
@@ -67,4 +67,52 @@ export const handleLogin = (data,closeModal,login) => {
       });
     }
   });
-}; 
+};
+export const handleChangePassword = (data, currentUser) => {
+  //Getting users from firebase
+  userRef.on("value", (snapshot) => {
+    const users = snapshot.val();
+    const userList = [];
+    //loop through users and remove id
+    for (let id in users) {
+      userList.push({ id, ...users[id] });
+    }
+    // if new password equal to old password
+    if (data.new_password === data.current_password) {
+      swal({
+        title: "Thất bại!",
+        text: "Mật khẩu mới trung với mật khẩu cũ !",
+        icon: "error",
+        button: "Thử lại",
+      });
+    }
+    // if not go here
+    else {
+      // find user that want to change password
+      const foundUser = userList.find((user) => user.user_name === currentUser);
+      if (foundUser) {
+        // if old password not correct
+        if (foundUser.user_password !== data.current_password) {
+          swal({
+            title: "Thất bại!",
+            text: "Mật khẩu hiên tại không đúng !",
+            icon: "error",
+            button: "Thử lại",
+          });
+        } else {
+          // getting exact user that need to change password from firebase
+          const passRef = firebase.database().ref("Users").child(foundUser.id);
+          passRef.update({
+            user_password: data.new_password,
+          });
+          swal({
+            title: "Thành công!",
+            text: "Bạn đã thay đổi mật khẩu thành công !",
+            icon: "success",
+            button: "Tiếp tục",
+          });
+        }
+      }
+    }
+  });
+};
