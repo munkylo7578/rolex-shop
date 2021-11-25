@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import "./App.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { MobileCategory, LoginForm, Header, Footer } from "./components";
+import { MobileCategory, LoginForm, Header, Footer ,Loading} from "./components";
 
 import {
   LoadableContact,
@@ -25,7 +25,7 @@ function App() {
       <LoginForm />
       <MobileCategory />
       <Header />
-      <Suspense fallback={<div></div>}>
+      <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path="/">
             <LoadableHome />

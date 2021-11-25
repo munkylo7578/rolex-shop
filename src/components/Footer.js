@@ -14,6 +14,11 @@ const Footer = () => {
 };
 
 const Wrapper = styled.footer`
+
+  position: absolute;
+  bottom: -100px;
+  width: 100%;
+
   height: 4rem;
   background-color: black;
   display: flex;
@@ -21,7 +26,7 @@ const Wrapper = styled.footer`
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 48px;
+  margin-top: 100px;
   letter-spacing: 3px;
   span {
     color: white;
