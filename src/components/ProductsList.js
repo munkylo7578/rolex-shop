@@ -1,8 +1,8 @@
-import React, { useEffect, Suspense } from "react";
+import React, { useEffect, Suspense,memo } from "react";
 import styled from "styled-components";
 import { useProductsContext } from "../contexts/products_context";
 import { useFilteredContext } from "../contexts/filtered_context";
-import { memo } from "react/cjs/react.development";
+
 import uniqid from "uniqid";
 import { LoadableProduct } from "../loadables";
 import { Loading } from ".";

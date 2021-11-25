@@ -4,7 +4,7 @@ import { useProductsContext } from "../contexts/products_context";
 import { products_url } from "../utils/constants";
 import { Loading, ProductImage, ProductInfo } from "../components";
 import styled from "styled-components";
-import { memo } from "react/cjs/react.development";
+
 import { useLocation } from "react-router-dom";
 const SingleProductPage = () => {
 
@@ -50,4 +50,4 @@ const Wrapper = styled.main`
         }
     }
 `;
-export default memo(SingleProductPage);
+export default SingleProductPage;
