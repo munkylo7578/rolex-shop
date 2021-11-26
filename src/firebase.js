@@ -11,7 +11,7 @@ import 'firebase/compat/database/dist/index.esm.js';
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "rolex-shop.firebaseapp.com",
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  databaseURL: "https://rolex-shop-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "rolex-shop",
   storageBucket:  "rolex-shop.appspot.com",
   messagingSenderId:  "368639051908",
