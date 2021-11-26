@@ -12,12 +12,12 @@ import { useUserContext } from "../contexts/user_context";
 const Sidebar = () => {
   const [brandsCategoryOpen, setBrandsCategoryOpen] = useState(false);
   const [loginFormOpen, setloginFormOpen] = useState(false);
-  const { isSidebarOpen, closeSidebar,openForm } = useProductsContext();
+  const { isSidebarOpen, closeSidebar, openForm } = useProductsContext();
   const { isLogin } = useUserContext();
-  const handleLogin = ()=>{
-    closeSidebar()
-    openForm()
-  }
+  const handleLogin = () => {
+    closeSidebar();
+    openForm();
+  };
   return (
     <SidebarContainer>
       <aside className={isSidebarOpen ? "show-sidebar" : ""}>
@@ -27,9 +27,10 @@ const Sidebar = () => {
             if (text === "Brands") {
               return (
                 <li key={id} className="brands-category link">
-                  <p>{text}</p>
+                  <p onClick={() => setBrandsCategoryOpen(!brandsCategoryOpen)}>
+                    {text}
+                  </p>
                   <MdArrowDropDown
-                    onClick={() => setBrandsCategoryOpen(!brandsCategoryOpen)}
                     className={brandsCategoryOpen ? "rotated" : ""}
                   />
 
@@ -193,7 +194,8 @@ const SidebarContainer = styled.div`
         transform: translateY(2px);
       }
     }
-    .brands-category,.login-form {
+    .brands-category,
+    .login-form {
       position: relative;
 
       a {
@@ -206,15 +208,15 @@ const SidebarContainer = styled.div`
       ul {
         height: 0;
         opacity: 0;
-        
+
         overflow: hidden;
 
         transition: all ease-in 0.3s;
       }
-      .brands-show,.login-show {
+      .brands-show,
+      .login-show {
         height: 100%;
         opacity: 1;
-        
       }
 
       p {
@@ -246,7 +248,7 @@ const SidebarContainer = styled.div`
       background-color: #ebebeb;
       cursor: pointer;
     }
-   
+
     .login-form:hover {
       background-color: #ebebeb;
       cursor: pointer;
