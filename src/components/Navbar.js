@@ -7,7 +7,9 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   
   return (
-    <NavContainer>
+    <NavContainer >
+      <div >
+
       <ul className="nav-center">
         {links.map((link, index) => {
           if (link.text === "Brands") {
@@ -48,6 +50,7 @@ const Navbar = () => {
           );
         })}
       </ul>
+      </div>
     </NavContainer>
   );
 };
@@ -72,6 +75,7 @@ const NavContainer = styled.div`
     display: flex;
     justify-content: space-between;
     width: 90vw;
+    max-width: 1280px;
     margin: 0 auto;
     align-items: center;
     height: 100%;
