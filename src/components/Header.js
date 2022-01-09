@@ -25,7 +25,7 @@ const Header = () => {
     }).then(logout)
   }
   return (
-    <Wrapper>
+    <Wrapper className="test">
       <Modal />
       <Sidebar />
       <nav className="sub-nav">
