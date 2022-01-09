@@ -14,7 +14,7 @@ const NoCart = () => {
   );
 };
 const NoCartWrapper = styled.main`
-height: 41.5vh;
+
   div {
     margin-top: 62px;
     text-align: center;
